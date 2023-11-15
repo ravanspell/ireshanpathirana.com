@@ -21,12 +21,17 @@ export interface TypographyProps {
      * for unit tests and custom styles
      */
     id?: string
+    /**
+     * Color of the text
+     */
+    color: string
 }
 
-function Typography(props: TypographyProps) {
-    const { text, id, type, decoration } = props;
+const Typography = (props: TypographyProps): JSX.Element => {
+    const { text, id, type, decoration, color } = props;
     return (
         <div
+            style={{ color: color }}
             key={id}
             id={id}
             className={`typography-${type}-${decoration}`}
@@ -39,7 +44,8 @@ function Typography(props: TypographyProps) {
 Typography.defaultProps = {
     type: 'base',
     weight: 'regular',
-    id: ''
+    id: '',
+    color: 'white'
 };
 
 export default Typography;
