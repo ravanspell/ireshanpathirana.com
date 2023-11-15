@@ -12,6 +12,9 @@ export interface TypographyProps {
      * variant of the text content
      */
     type: 'header' | 'subheader' | 'label'
+    /**
+     * decoration of the text
+     */
     decoration: 'bold' | 'italic' | 'regular'
     /**
      * id of the text element
@@ -24,9 +27,9 @@ function Typography(props: TypographyProps) {
     const { text, id, type, decoration } = props;
     return (
         <div
-        
-        id={id} 
-        className={`typography-${type}-${decoration}`}
+            key={id}
+            id={id}
+            className={`typography-${type}-${decoration}`}
         >
             {text}
         </div>
