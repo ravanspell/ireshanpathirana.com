@@ -15,5 +15,11 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
+  webpack: (config, options) => {
+    if(options?.cache){
+      options.cache.set = () => Promise.resolve({path: ''});
+    }
+    return config;
+  },
 };
 export default config;
