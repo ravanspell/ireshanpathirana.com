@@ -1,0 +1,14 @@
+.article-card{
+    display: flex;
+    flex-direction: column;
+    background-color: inherit;
+
+    &__date {
+        margin-bottom: 0.5rem;
+        &:before {
+            content: '';
+            border-left: 4px solid rgb(113 113 122/1);
+            margin-right: 0.3rem;
+        }
+    }
+}
