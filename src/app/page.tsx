@@ -9,10 +9,12 @@ export default function Home() {
             <div className="header__content">
                 <div className="header__main-content">
                     <div style={{display: 'flex', gap: "10px", alignItems: 'center'}}>
-                        <div >
-                            <Image 
+                        <div>
+                            <Image
+                            width={4}
+                            height={4}
                             alt="profile"
-                            style="height: 4rem;aspect-ratio: 1; border-radius: calc(4rem / 2);"
+                            style={{height: "4rem", aspectRatio: 1, borderRadius: 'calc(4rem / 2)'}}
                             src="https://media.licdn.com/dms/image/D5603AQFnrwizlSlijw/profile-displayphoto-shrink_800_800/0/1695574016060?e=1701907200&v=beta&t=goFPT9bK4KqpzrBZdVuOiEU3V1LcE0N42QTquvzgYhg" />
                         </div>
                         <h1 style={{fontSize: '25pt'}}>Ireshan Pathirana</h1>
