@@ -1,1 +1,129 @@
 @forward 'boilerplate';
+
+@use './styles/globals/mixins' as *;
+
+$primary-color: #007bff;
+
+$--clr-primary: #fff;
+$--clr-primary-300: rgba(255,255,255,.8);
+$--clr-accent-300: #a9f0e2;
+$--clr-accent-400: #0fc5b0;
+$--clr-accent-500: #00937e;
+$--clr-accent-600: #0a4039;
+$--clr-secondary-200: #434956;
+$--clr-secondary-300: #272a2e;
+$--clr-secondary-400: #222529;
+$--clr-secondary-500: #1d1e20;
+$--fw-300: 300;
+$--fw-400: 400;
+$--fw-700: 700;
+$--fs-100: .64rem;
+$--fs-200: .8rem;
+$--fs-300: 1.125rem;
+$--fs-400: 1.325rem;
+$--fs-500: 1.563rem;
+$--fs-600: 1.563rem;
+$--fs-700: 2.0rem;
+$--fs-800: 2.5rem;
+$--fs-900: 3.2rem;
+$--fs-xl: clamp(4.5rem,1rem + 8vw,9rem);
+$--ff-accent: atrament-web,sans-serif;
+$--ff-primary: basic-sans,sans-serif; 
+$--spacer: 2rem;
+$--linear-gradient: linear-gradient(90deg,var(--clr-secondary-300),var(--clr-secondary-400));
+$--glow-gradient: radial-gradient(var(--clr-secondary-300),var(--clr-secondary-400));
+// /* Import Bootstrap */
+// @import "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css";
+
+html {
+    box-sizing: border-box;
+    // will match default font size of the browser
+    font-size: 100%;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: $--fw-300;
+    line-height: 1.6;
+    // resets 
+    margin: 0;
+    padding: 0;
+    background-color: #0b252d; //$--clr-secondary-400;
+    color: $--clr-primary;
+    color: rgb(148 163 184/1);
+}
+
+nav {
+    background-color: $primary-color;
+    z-index: 1;
+}
+
+.left-content {
+    position: sticky;
+    max-height: 100vh;
+    top: 0;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    @include sm {
+        position: unset;
+        max-height: none;
+    }
+}
+
+.header__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+section {
+    margin-bottom: 5rem;
+    scroll-margin-top: 5rem;
+}
+
+.content_wrapper {
+    display: grid;
+
+    @include sm {
+        display: block;
+    }
+
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+}
+
+.container {
+    width: min(1110px, 100%);
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+// @media (max-width: 750px) {
+//     .content_wrapper{
+//         display: block;
+//     }
+
+//     .left-content{
+//         position: unset;
+//         max-height: none;
+//     }
+// }
