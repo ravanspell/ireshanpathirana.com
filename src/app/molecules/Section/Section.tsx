@@ -28,7 +28,7 @@ const Section = (props: SectionProps): JSX.Element => {
             <div className='content-section__header'>
                 <Typography
                     type='ererer'
-                    tag='h3'
+                    tag='h4'
                     text={headerText}
                     id='section-header-text'
                 />
