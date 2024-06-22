@@ -3,44 +3,44 @@
   on:
     push:
       branches: [main]
-  # These permissions are needed to interact with GitHub's OIDC Token endpoint.
-  permissions:
-    id-token: write
-    contents: read
   jobs:
     build-and-deploy:
       name: Build and Deploy
       runs-on: ubuntu-latest
   
       env:
-        NEXTJS_DIST: out
-        AWS_REGION: ap-southeast-1
-        S3_BUCKET: ireshanpathirana.com
+        NEXTJS_BUILD_DIR: out
+        AWS_REGION: ${{secrets.AWS_REGION}}
+        S3_BUCKET: ${{secrets.S3_BUCKET}}
+        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
         # CLOUDFRONT_DISTRIBUTION_ID: E19M07TM9MI9FH
   
       steps:
         - name: Checkout
           uses: actions/checkout@v3
   
-        - name: Configure AWS credentials from AWS account
-          uses: aws-actions/configure-aws-credentials@v2
-          with:
-            role-to-assume: arn:aws:iam::132930376828:role/oidc-aws-github
-            aws-region: ${{ env.AWS_REGION }}
-  
+        - name: Node Js Setup (Latest)
+          uses: actions/setup-node@v2
+
         - name: Install Dependencies
           run: |
             node --version
-            npm ci --production
-            npm install @types/react 
-            npm install @types/node
+            npm install
   
         - name: Build Static Website
           run: npm run build
   
+        - name: Configure AWS Credencials
+          uses: aws-actions/configure-aws-credentials@v2
+          with: 
+            aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+            aws-region: ${{ env.AWS_REGION }}
+
         - name: Copy files to the production website with the AWS CLI
           run: |
-            aws s3 sync --delete ${{ env.NEXTJS_DIST }} s3://${{ env.S3_BUCKET }}
+            aws s3 sync --delete ${{ env.NEXTJS_BUILD_DIR }} s3://${{ env.S3_BUCKET }}
   
         #TODO: setup cloud front destribtuion
         # - name: Copy files to the production website with the AWS CLI
