@@ -12,20 +12,16 @@ export interface CardProps {
      * id of the text element
      * for unit tests and custom styles
      */
-    id?: string
+    id: string
 }
 
-function Card(props: CardProps) {
+const Card = (props: CardProps): JSX.Element => {
     const { children, id} = props;
     return (
-        <div id={id} className={"card"}>
+        <div id={id} className="card">
             {children}
         </div>
     );
 }
-
-Card.defaultProps = {
-    id: ''
-};
 
 export default Card;
