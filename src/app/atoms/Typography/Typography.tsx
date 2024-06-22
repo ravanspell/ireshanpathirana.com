@@ -41,7 +41,7 @@ const Typography = <T extends TypographyIntrinsicElement = 'div'>(props: Typogra
         id,
         tag: elementType = "div" as T,
         decoration,
-        className,
+        className = '',
         type,
         ...rest
     } = props;
@@ -56,9 +56,5 @@ const Typography = <T extends TypographyIntrinsicElement = 'div'>(props: Typogra
         </Component>
     );
 }
-
-Typography.defaultProps = {
-    className: '',
-};
 
 export default Typography;
