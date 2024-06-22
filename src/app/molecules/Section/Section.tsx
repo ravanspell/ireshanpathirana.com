@@ -1,7 +1,7 @@
 /**
  * section component for hold section items
  */
-import { ReactNode } from 'react';
+import { ReactNode, forwardRef } from 'react';
 import Typography from '../../atoms/Typography/Typography';
 import './Section.scss';
 
@@ -19,12 +19,22 @@ export interface SectionProps {
      * section header text
      */
     headerText: string
+    mainContentRef: React.RefObject<Record<string, HTMLElement>>
 }
 
 const Section = (props: SectionProps): JSX.Element => {
-    const { id, children, headerText } = props;
+    const { id, children, headerText, mainContentRef } = props;
+    const handleSetupSectionRef = (ref: HTMLElement | null, id: string) => {
+        if (mainContentRef.current && ref) {
+            mainContentRef.current[id] = ref
+        }
+    }
     return (
-        <section className='content-section' aria-label={id} id={id}>
+        <section
+            ref={(el) => handleSetupSectionRef(el, id)}
+            className='content-section'
+            aria-label={id}
+            id={id}>
             <div className='content-section__header'>
                 <Typography
                     type='ererer'
@@ -36,6 +46,6 @@ const Section = (props: SectionProps): JSX.Element => {
             {children}
         </section>
     );
-}
+};
 
 export default Section;
