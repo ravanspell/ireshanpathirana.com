@@ -1,3 +1,5 @@
+@use './veriables' as *;
+
 * {
     b-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -13,6 +15,6 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: rgba(39,39,42,.9);
+    background-color: var(--body-background-color);
     color: white;
 }

@@ -5,9 +5,9 @@ import Typography from '../../atoms/Typography/Typography';
 import Section from '../../molecules/Section/Section';
 
 
-const AboutMeSection = ({mainContentRef}:{ mainContentRef: any}): JSX.Element => {
+const ExperinceSection = ({mainContentRef}:{ mainContentRef: any}): JSX.Element => {
     return (
-        <Section mainContentRef={mainContentRef} id='about-me' headerText='About Me'>
+        <Section mainContentRef={mainContentRef} id='experince' headerText='Experince'>
             <Typography
                 id="this is id"
                 type="dfgdfgdfg"
@@ -36,4 +36,4 @@ const AboutMeSection = ({mainContentRef}:{ mainContentRef: any}): JSX.Element =>
     );
 }
 
-export default AboutMeSection;
+export default ExperinceSection;

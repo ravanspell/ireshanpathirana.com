@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/your-renderer';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import AboutMeSection from './AboutMeSection';
+import AboutMeSection from "./AboutMeSection";
 
 const meta: Meta<typeof AboutMeSection> = {
   component: AboutMeSection,
@@ -8,6 +8,5 @@ const meta: Meta<typeof AboutMeSection> = {
 export default meta;
 
 type Story = StoryObj<typeof AboutMeSection>;
-
 
 export const Primary: Story = {};
