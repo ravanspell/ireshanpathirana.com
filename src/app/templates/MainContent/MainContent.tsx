@@ -2,13 +2,17 @@
  * About me section
  */
 import AboutMeSection from '@/app/organisms/AboutMeSection/AboutMeSection';
+import ExperinceSection from '@/app/organisms/ExperinceSection/ExpericeSection';
+import ProjectsSection from '@/app/organisms/ProjectsSection/ProjectsSection';
 import './MainContent.scss';
 
 
-const MainContent = (): JSX.Element => {
+const MainContent = ({mainContentRef}:{mainContentRef: any}): JSX.Element => {
     return (
         <main>
-            <AboutMeSection />
+            <AboutMeSection mainContentRef={mainContentRef}/>
+            <ExperinceSection mainContentRef={mainContentRef}/>
+            <ProjectsSection mainContentRef={mainContentRef}/>
         </main>
     );
 }
