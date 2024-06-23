@@ -3,7 +3,6 @@
  * Main nav Bar
  */
 import { useEffect, useRef, useState } from 'react';
-import './NavBar.scss';
 import MainMenuItems from '@/app/molecules/MainMenuItems/MainMenuItems';
 
 const NavBar = ({ mainContentRef }: { mainContentRef: any }): JSX.Element => {

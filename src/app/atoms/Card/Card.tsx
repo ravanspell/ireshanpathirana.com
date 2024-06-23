@@ -1,7 +1,6 @@
 /**
  * Typography control texts
  */
-import './Card.scss';
 
 export interface CardProps {
     /**
