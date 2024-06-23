@@ -3,7 +3,6 @@
  */
 import Card from '../../atoms/Card/Card';
 import Typography from '../../atoms/Typography/Typography';
-import './ExperienceCard.scss';
 
 export interface ExperienceCardProps {
     /**

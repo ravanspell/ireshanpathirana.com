@@ -3,7 +3,6 @@
  */
 import { ReactNode, forwardRef } from 'react';
 import Typography from '../../atoms/Typography/Typography';
-import './Section.scss';
 
 export interface SectionProps {
     /**

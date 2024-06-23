@@ -3,7 +3,6 @@
  * component allows 
  */
 import { ElementType } from 'react';
-import './Typography.scss';
 
 type TypographyIntrinsicElement = 'div' | 'time' | 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span';
 
