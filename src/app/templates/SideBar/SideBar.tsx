@@ -2,6 +2,9 @@
  * Left side bar
  */
 import Image from "next/image";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 const SideBar = (): JSX.Element => {
     return (
@@ -33,14 +36,14 @@ const SideBar = (): JSX.Element => {
             {/* social media links */}
             <div className="mt-10">
                 <div className="flex space-x-4 justify-center">
-                <a href="https://github.com" className="social-link" title="Github">
-                        <i className="fab fa-github"></i>
+                    <a href="https://github.com" className="text-light-gray-70 text-2xl transition-colors duration-300 hover:text-light-gray" title="Github">
+                        <FontAwesomeIcon icon={faGithub} />
                     </a>
-                    <a href="https://linkedin.com" className="social-link" title="LinkedIn">
-                        <i className="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com" className="text-light-gray-70 text-2xl transition-colors duration-300 hover:text-light-gray" title="LinkedIn">
+                        <FontAwesomeIcon icon={faLinkedin} />
                     </a>
                     <a href="mailto:ireshan@example.com" className="social-link" title="Email to Ireshan">
-                        <i className="fas fa-envelope"></i>
+                        <FontAwesomeIcon icon={faEnvelope} />
                     </a>
                 </div>
             </div>
