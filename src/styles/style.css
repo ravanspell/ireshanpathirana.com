@@ -1,0 +1,16 @@
+@import './_veriables.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: var(--ff-poppins);
+    background-color: var(--smoky-black);
+    color: white;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}

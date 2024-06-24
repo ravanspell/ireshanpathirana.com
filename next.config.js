@@ -1,16 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
-    // images: {
-    //     remotePatterns: [
-    //         {
-    //             protocol: 'https',
-    //             hostname: 'media.licdn.com',
-    //             port: '',
-    //             // pathname: '/account123/**',
-    //         },
-    //     ],
-    // },
+    images: {
+        //TODO: temporarly provitioned
+        unoptimized: true,
+        // remotePatterns: [
+        //     {
+        //         protocol: 'https',
+        //         hostname: 'via.placeholder.com',
+        //     },
+        // ],
+    },
 }
 
 module.exports = nextConfig
