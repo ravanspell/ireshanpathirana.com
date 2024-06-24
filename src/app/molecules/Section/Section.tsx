@@ -1,8 +1,9 @@
 /**
  * section component for hold section items
  */
-import { ReactNode, forwardRef } from 'react';
+import { ReactNode } from 'react';
 import Typography from '../../atoms/Typography/Typography';
+import './Section.css';
 
 export interface SectionProps {
     /**
@@ -31,17 +32,19 @@ const Section = (props: SectionProps): JSX.Element => {
     return (
         <section
             ref={(el) => handleSetupSectionRef(el, id)}
-            className='content-section'
+            className="section mb-20 scroll-mt-10"
             aria-label={id}
-            id={id}>
-            <div className='content-section__header'>
+            id={id}
+            >
+            <header className="relative pb-2 mb-6">
                 <Typography
                     type='ererer'
-                    tag='h4'
+                    tag='h2'
+                    className='section-header-text uppercase text-md font-bold'
                     text={headerText}
                     id='section-header-text'
                 />
-            </div>
+            </header>
             {children}
         </section>
     );
