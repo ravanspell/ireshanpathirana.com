@@ -8,7 +8,12 @@ module.exports = {
       center: true,
       padding: '1rem',
     },
-    extend: {},
+    extend: {
+      colors: {
+        'gradient-onyx': 'var(--bg-gradient-onyx)',
+        'orange-yellow-crayola': 'var(--orange-yellow-crayola)',
+      }
+    },
   },
   plugins: [],
 }

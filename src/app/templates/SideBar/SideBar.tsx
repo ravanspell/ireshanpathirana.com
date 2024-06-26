@@ -4,7 +4,9 @@
 import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import SocialLinks from "@/app/organisms/SoclialLinks/SoclialLinks";
+import Button from "@/app/atoms/Button/Button";
 
 const SideBar = (): JSX.Element => {
     return (
@@ -26,26 +28,33 @@ const SideBar = (): JSX.Element => {
             </nav>
             {/* resume download dropdown */}
             <div className="dropdown-select-wrapper">
-                <i className="fas fa-download dropdown-select-icon"></i>
-                <select className="dropdown-select" aria-label="Download Resume">
-                    <option value="" disabled selected>Download Resume</option>
-                    <option value="pdf" onClick={() => { }}>PDF Format</option>
-                    <option value="word" onClick={() => { }}>Word Format</option>
-                </select>
+                <Button
+                    icon={faDownload}
+                    label="Download Resume"
+                    onClick={() => { }}
+                />
             </div>
             {/* social media links */}
             <div className="mt-10">
-                <div className="flex space-x-4 justify-center">
-                    <a href="https://github.com" className="text-light-gray-70 text-2xl transition-colors duration-300 hover:text-light-gray" title="Github">
-                        <FontAwesomeIcon icon={faGithub} />
-                    </a>
-                    <a href="https://linkedin.com" className="text-light-gray-70 text-2xl transition-colors duration-300 hover:text-light-gray" title="LinkedIn">
-                        <FontAwesomeIcon icon={faLinkedin} />
-                    </a>
-                    <a href="mailto:ireshan@example.com" className="social-link" title="Email to Ireshan">
-                        <FontAwesomeIcon icon={faEnvelope} />
-                    </a>
-                </div>
+                <SocialLinks
+                    socialIconsOptions={[
+                        {
+                            title: 'gitHub',
+                            href: 'https://github.com',
+                            icon: faGithub
+                        },
+                        {
+                            title: 'linkedin',
+                            href: 'https://linkedin.com',
+                            icon: faLinkedin
+                        },
+                        {
+                            title: 'Email to Ireshan',
+                            href: "mailto:ireshan@example.com",
+                            icon: faEnvelope
+                        },
+                    ]}
+                />
             </div>
         </aside>
     );
