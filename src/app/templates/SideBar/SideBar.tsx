@@ -4,8 +4,9 @@
 import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import SocialLinks from "@/app/organisms/SoclialLinks/SoclialLinks";
+import Button from "@/app/atoms/Button/Button";
 
 const SideBar = (): JSX.Element => {
     return (
@@ -27,12 +28,11 @@ const SideBar = (): JSX.Element => {
             </nav>
             {/* resume download dropdown */}
             <div className="dropdown-select-wrapper">
-                <i className="fas fa-download dropdown-select-icon"></i>
-                <select className="dropdown-select" aria-label="Download Resume">
-                    <option value="" disabled selected>Download Resume</option>
-                    <option value="pdf" onClick={() => { }}>PDF Format</option>
-                    <option value="word" onClick={() => { }}>Word Format</option>
-                </select>
+                <Button
+                    icon={faDownload}
+                    label="Download Resume"
+                    onClick={() => { }}
+                />
             </div>
             {/* social media links */}
             <div className="mt-10">

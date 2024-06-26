@@ -14,7 +14,7 @@ export interface SectionProps {
     onClick: MouseEventHandler<HTMLButtonElement>
 }
 
-const SocialLinks = (props: SectionProps): JSX.Element => {
+const Button = (props: SectionProps): JSX.Element => {
     const { label, icon, onClick } = props;
 
     return (
@@ -30,8 +30,8 @@ const SocialLinks = (props: SectionProps): JSX.Element => {
             px-5 
             py-3.25 
             rounded-[14px] 
-            text-[var(--orange-yellow-crayola)] 
-            bg-[var(--border-gradient-onyx)] 
+            text-orange-yellow-crayola 
+            bg-gradient-onyx 
             text-[var(--fs-6)] 
             capitalize 
             shadow-[var(--shadow-3)] 
@@ -63,4 +63,4 @@ const SocialLinks = (props: SectionProps): JSX.Element => {
     );
 };
 
-export default SocialLinks;
+export default Button;
