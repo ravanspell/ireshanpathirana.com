@@ -10,7 +10,7 @@ import Button from "@/app/atoms/Button/Button";
 
 const SideBar = (): JSX.Element => {
     return (
-        <aside id="sidebar" className="sticky top-10 w-full md:w-80" aria-label="Main Navigation">
+        <aside id="sidebar" className="sticky top-10 w-full md:w-80 bg-custom-eerie-black-2 border border-custom-jet rounded-lg p-4 shadow-custom-shadow-1 z-10" aria-label="Main Navigation">
             <div className="relative bg-gradient-to-br from-onyx-600 to-onyx-400 p-3 rounded-full h-36 w-36 mx-auto mb-5">
                 <Image fill src="https://via.placeholder.com/150" alt="Profile Avatar" className="rounded-full h-full w-full object-cover" />
             </div>
