@@ -31,7 +31,7 @@ const SocialLinkIcon = (props: SectionProps): JSX.Element => {
         <a
             id={id}
             href={href}
-            className="text-light-gray-70 text-2xl transition-colors duration-300 hover:text-light-gray"
+            className="text-light-gray text-2xl transition-colors duration-300 hover:text-white"
             title={title}
         >
             <FontAwesomeIcon icon={icon} />
