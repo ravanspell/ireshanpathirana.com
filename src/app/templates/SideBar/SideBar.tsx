@@ -1,8 +1,6 @@
 /**
  * Left side bar
  */
-import Image from "next/image";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faDownload, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import SocialLinks from "@/app/organisms/SoclialLinks/SoclialLinks";
