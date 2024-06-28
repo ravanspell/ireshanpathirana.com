@@ -24,6 +24,7 @@ const SocialLinks = (props: SectionProps): JSX.Element => {
         <div className="flex space-x-4 justify-center">
             {socialIconsOptions.map(({ href, icon, title }) => (
                 <SocialLinkIcon
+                    key={title}
                     id={`social-icon-${title.split(' ').join('-')}`}
                     href={href}
                     icon={icon}
