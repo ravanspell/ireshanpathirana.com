@@ -23,9 +23,9 @@ const SideBar = (): JSX.Element => {
             </div>
             <nav>
                 <ul className="space-y-3">
-                    <li><a href="#about" className="nav-link">About</a></li>
-                    <li><a href="#portfolio" className="nav-link">Portfolio</a></li>
-                    <li><a href="#blog" className="nav-link">Blog</a></li>
+                    <li><a href="#about" className="text-white text-base font-medium transition-colors transform hover:text-orange-yellow-crayola hover:scale-110 active:text-orange-yellow-crayola mb-6">About</a></li>
+                    <li><a href="#portfolio" className="text-white text-base font-medium transition-colors transform hover:text-orange-yellow-crayola hover:scale-110 active:text-orange-yellow-crayola mb-6">Portfolio</a></li>
+                    <li><a href="#blog" className="text-white text-base font-medium transition-colors transform hover:text-orange-yellow-crayola hover:scale-110 active:text-orange-yellow-crayola mb-6">Blog</a></li>
                 </ul>
             </nav>
             {/* resume download dropdown */}
