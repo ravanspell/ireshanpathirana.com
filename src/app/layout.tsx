@@ -1,6 +1,17 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
 import '../styles/style.css';
+
+// add font awesome icons globally
+library.add(fas);
+
+// font awesome initial styles desable (Specific to next.js)
+config.autoAddCss = false
 
 const inter = Inter({ subsets: ['latin'] })
 
