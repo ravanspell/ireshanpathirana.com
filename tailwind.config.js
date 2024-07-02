@@ -14,7 +14,12 @@ module.exports = {
         'orange-yellow-crayola': 'var(--orange-yellow-crayola)',
         'custom-eerie-black-2': 'var(--eerie-black-2)',
         'custom-jet': 'var(--jet)',
-        'light-gray': 'var(--light-gray)'
+        'light-gray': 'var(--light-gray)',
+        'gradient-yellow': 'var(--text-gradient-yellow)',
+        'gradient-yellow-1': 'var(--bg-gradient-yellow-1)',
+        'gradient-yellow-2': 'var(--bg-gradient-yellow-2)',
+        'gradient-yellow-3': 'var(--bg-gradient-yellow-3)',
+        'gradient-jet': 'var(--bg-gradient-jet)',
       },
       boxShadow: {
         'shadow-1': 'var(--shadow-1)',
