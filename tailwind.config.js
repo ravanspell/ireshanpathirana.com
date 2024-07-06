@@ -20,7 +20,8 @@ module.exports = {
         'gradient-yellow-2': 'var(--bg-gradient-yellow-2)',
         'gradient-yellow-3': 'var(--bg-gradient-yellow-3)',
         'gradient-jet': 'var(--bg-gradient-jet)',
-        'border-gradient-onyx': 'var(--border-gradient-onyx)'
+        'border-gradient-onyx': 'var(--border-gradient-onyx)',
+        'onyx': 'var(--onyx)'
       },
       boxShadow: {
         'shadow-1': 'var(--shadow-1)',
