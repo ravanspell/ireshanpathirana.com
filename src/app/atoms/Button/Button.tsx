@@ -20,7 +20,6 @@ const Button = (props: SectionProps): JSX.Element => {
     return (
         <button
             className="
-            form-btn 
             relative 
             w-full 
             flex 
@@ -32,15 +31,20 @@ const Button = (props: SectionProps): JSX.Element => {
             rounded-[14px] 
             text-orange-yellow-crayola 
             bg-gradient-onyx 
-            text-[var(--fs-6)] 
             capitalize 
             shadow-[var(--shadow-3)] 
-            z-1 
+            z-[1] 
             transition-[var(--transition-1)] 
-            hover:bg-[var(--bg-gradient-yellow-1)] 
-            disabled:opacity-70 
-            disabled:cursor-not-allowed 
-            disabled:hover:bg-[var(--border-gradient-onyx)]
+            hover:bg-gradient-yellow-1)] 
+
+            before:content-['']
+            before:absolute
+            before:inset-px
+            before:bg-gradient-jet
+            before:rounded-[14px]
+            before:-z-[1]
+
+            hover:before:bg-gradient-yellow-2
             "
             type='button'
             onClick={onClick}

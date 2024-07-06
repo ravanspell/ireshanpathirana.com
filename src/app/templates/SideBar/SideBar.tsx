@@ -11,7 +11,7 @@ const SideBar = (): JSX.Element => {
     return (
         <aside
             id="sidebar"
-            className="sticky top-10 w-full md:w-80 bg-custom-eerie-black-2 border border-custom-jet rounded-lg p-4 shadow-custom-shadow-1 z-10"
+            className="sticky top-10 w-full md:w-96 bg-custom-eerie-black-2 border border-custom-jet rounded-lg p-7 shadow-custom-shadow-1 z-10"
             aria-label="Main Navigation"
         >
             <ProfileImage id="my-profile-image" src="https://via.placeholder.com/150" />
