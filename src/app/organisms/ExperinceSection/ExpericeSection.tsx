@@ -1,91 +1,85 @@
 /**
  * Experince section
  */
-import Card from '@/app/atoms/Card/Card';
-import Typography from '../../atoms/Typography/Typography';
 import Section from '../../molecules/Section/Section';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import ExperienceCard from '@/app/molecules/ExperienceCard/ExperienceCard';
 
 
 const ExperinceSection = ({ mainContentRef }: { mainContentRef: any }): JSX.Element => {
     return (
-        <Section mainContentRef={mainContentRef} id='experince' headerText='Experince'>
-            <ol className="timeline-list">
-                <Card className="[&:not(:last-child)]:mb-5" id="exp">
-                <div className='grid grid-flow-row sm:grid-flow-col gap-x-10 gap-y-2'>
-                        <span>2010 — 2013</span>
-                        <div className='flex flex-col gap-y-2 '>
-                            <h4 className="h4 group-hover:text-orange-yellow-crayola">
-                                Axiata Digital labs
-                                <FontAwesomeIcon className='transition-transform -rotate-45 group-hover:translate-x-3 group-hover:translate-y-3' icon={faArrowRight} />
-                            </h4>
-                            <h4 className="h4 timeline-item-title">Associate Sofiware Engineer</h4>
-                            <Typography
-                                id='experince-description-3'
-                                type=''
-                                tag='p'
-                                text='uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.'
-                            />
-                            <div>
-                                <span>type script</span>
-                                <span>type script</span>
-                                <span>type script</span>
-                                <span>type script</span>
-                            </div>
-                        </div>
-                    </div>
-                </Card>
-                <Card className="[&:not(:last-child)]:mb-5" id="exp 2">
-                <div className='grid grid-flow-row sm:grid-flow-col gap-x-10 gap-y-2'>
-                        <span>2010 — 2013</span>
-                        <div className='flex flex-col gap-y-2 '>
-                            <h4 className="h4 group-hover:text-orange-yellow-crayola">
-                                Axiata Digital labs
-                                <FontAwesomeIcon className='transition-transform -rotate-45 group-hover:translate-x-3 group-hover:translate-y-3' icon={faArrowRight} />
-                            </h4>
-                            <h4 className="h4 timeline-item-title">Associate Sofiware Engineer</h4>
-                            <Typography
-                                id='experince-description-3'
-                                type=''
-                                tag='p'
-                                text='uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.'
-                            />
-                            <div>
-                                <span>type script</span>
-                                <span>type script</span>
-                                <span>type script</span>
-                                <span>type script</span>
-                            </div>
-                        </div>
-                    </div>
-                </Card>
-                <Card className="[&:not(:last-child)]:mb-5 group" id="exp 3">
-                    <div className='grid grid-flow-row sm:grid-flow-col gap-x-10 gap-y-2'>
-                        <span>2010 — 2013</span>
-                        <div className='flex flex-col gap-y-2 '>
-                            <h4 className="h4 group-hover:text-orange-yellow-crayola">
-                                Axiata Digital labs
-                                <FontAwesomeIcon className='transition-transform -rotate-45 group-hover:translate-x-3 group-hover:translate-y-3' icon={faArrowRight} />
-                            </h4>
-                            <h4 className="h4 timeline-item-title">Associate Sofiware Engineer</h4>
-                            <Typography
-                                id='experince-description-3'
-                                type=''
-                                tag='p'
-                                text='uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.'
-                            />
-                            <div>
-                                <span>type script</span>
-                                <span>type script</span>
-                                <span>type script</span>
-                                <span>type script</span>
-                            </div>
-                        </div>
-                    </div>
-                </Card>
-            </ol>
-        </Section>
+        <Section
+            mainContentRef={mainContentRef}
+            id='experince'
+            headerText='Experince'
+        >
+            <div className='[&:not(:last-child)]:mb-5' >
+                <ExperienceCard
+                    id='accenture'
+                    date="2023 - Present"
+                    compaynyName='Accenture - Singapore'
+                    designation='Senior Sofiware Engineer'
+                    shortDescription='uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.'
+                    technlogiesTagLabels={[
+                        'JavaScript',
+                        'Node.js',
+                        'TypeScript',
+                        'Rect.js',
+                        'Storybook',
+                        'Microfrontends',
+                        'Redux',
+                        'Redux Toolkit',
+                        'Jest',
+                        'React Testing Library'
+                    ]}
+                />
+                <ExperienceCard
+                    id='eyepax-it'
+                    date="2021 - 2023"
+                    compaynyName='Eyepax It Consultents - Sri Lanka'
+                    designation='Sofiware Engineer'
+                    shortDescription='uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.'
+                    technlogiesTagLabels={[
+                        'JavaScript',
+                        'Node.js',
+                        'TypeScript',
+                        'Rect.js',
+                        'jest',
+                        'React Testing Library',
+                        'Next.js',
+                        'Storybook',
+                        'PHP',
+                        'Laravel',
+                        'AWS',
+                        'Serverless',
+                        'Nest.js',
+                        'Redux',
+                        'Redux Toolkit',
+                    ]}
+                />
+                <ExperienceCard
+                    id='axiata-digital-labs2'
+                    date="2019 - 2021"
+                    compaynyName='Axiata Digital labs - Sri Lanka' 
+                    designation='Sofiware Engineer'
+                    shortDescription='uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.'
+                    technlogiesTagLabels={[
+                        'JavaScript',
+                        'Node.js',
+                        'TypeScript',
+                        'Serverless',
+                        'Azure',
+                        'Redux',
+                        'Redux Saga',
+                        'PHP',
+                        'Laravel',
+                        'Rect.js',
+                        'Jest',
+                        'React Testing Library',
+                        'Storybook',
+                    ]}
+                />
+            </div>
+        </Section >
     );
 }
 
