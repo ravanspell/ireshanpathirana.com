@@ -1,18 +1,29 @@
-/**
- * section component for hold section items
- */
+import MenuItem from "@/app/atoms/MenuItem/MenuItem";
 
+/**
+ * Main menu items
+ */
 export interface MainMenuItemsProps {
-    visibleKey: string
+    menuItems: {
+        href: string
+        label: string
+    }[]
 }
 
 const MainMenuItems = (props: MainMenuItemsProps): JSX.Element => {
-    const {visibleKey} = props;
+    const { menuItems } = props;
+
     return (
         <>
-            <a className={`nav-link ${visibleKey === 'about-me' ? 'active' : ''}`} href="#about-me">About Me</a>
-            <a className={`nav-link ${visibleKey === 'experince' ? 'active' : ''}`} href="#experince">Experince</a>
-            <a className={`nav-link ${visibleKey === 'projects' ? 'active' : ''}`} href="#projects">Projects</a>
+            {
+                menuItems.map(({ href, label }) => (
+                    <MenuItem
+                        key={label}
+                        href={href}
+                        label={label}
+                    />
+                ))
+            }
         </>
     );
 };
