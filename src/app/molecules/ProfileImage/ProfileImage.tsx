@@ -19,7 +19,7 @@ export interface ProfileImageProps {
 const ProfileImage = (props: ProfileImageProps): JSX.Element => {
     const { src, id } = props;
     return (
-        <div id={id} className="relative bg-gradient-to-br bg-gradient-onyx p-3 rounded-full h-36 w-36 mx-auto mb-5">
+        <div id={id} className="relative bg-gradient-to-br bg-gradient-onyx p-3 rounded-full h-36 w-36 mx-auto">
             <Image
                 fill
                 src={src}

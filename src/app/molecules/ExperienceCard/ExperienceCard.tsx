@@ -61,7 +61,7 @@ const ExperienceCard = (props: ExperienceCardProps): JSX.Element => {
                         text={shortDescription}
                     />
                     <TagListContainer
-                        areaLabel='Technologies used'
+                        areaLabel={`technologies used in ${compaynyName}`}
                         tagLabels={technlogiesTagLabels}
                     />
                 </div>
