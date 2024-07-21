@@ -16,7 +16,7 @@ const ExperinceSection = ({ mainContentRef }: { mainContentRef: any }): JSX.Elem
                 <ExperienceCard
                     id='accenture'
                     date="2023 - Present"
-                    compaynyName='Accenture - Singapore'
+                    compaynyName='Accenture'
                     designation='Senior Sofiware Engineer'
                     shortDescription='uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.'
                     technlogiesTagLabels={[
@@ -35,7 +35,7 @@ const ExperinceSection = ({ mainContentRef }: { mainContentRef: any }): JSX.Elem
                 <ExperienceCard
                     id='eyepax-it'
                     date="2021 - 2023"
-                    compaynyName='Eyepax It Consultents - Sri Lanka'
+                    compaynyName='Eyepax It Consultents'
                     designation='Sofiware Engineer'
                     shortDescription='uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.'
                     technlogiesTagLabels={[
@@ -59,7 +59,7 @@ const ExperinceSection = ({ mainContentRef }: { mainContentRef: any }): JSX.Elem
                 <ExperienceCard
                     id='axiata-digital-labs2'
                     date="2019 - 2021"
-                    compaynyName='Axiata Digital labs - Sri Lanka' 
+                    compaynyName='Axiata Digital labs' 
                     designation='Sofiware Engineer'
                     shortDescription='uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.'
                     technlogiesTagLabels={[

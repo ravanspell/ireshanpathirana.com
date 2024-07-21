@@ -21,7 +21,9 @@ module.exports = {
         'gradient-yellow-3': 'var(--bg-gradient-yellow-3)',
         'gradient-jet': 'var(--bg-gradient-jet)',
         'border-gradient-onyx': 'var(--border-gradient-onyx)',
-        'onyx': 'var(--onyx)'
+        'onyx': 'var(--onyx)',
+        'nav-bar-background': 'var(--nav-bar-background)',
+        
       },
       boxShadow: {
         'shadow-1': 'var(--shadow-1)',

@@ -19,7 +19,6 @@
     --text-gradient-yellow: linear-gradient(to right,
             hsl(45, 100%, 72%),
             hsl(35, 100%, 68%));
-
     /* solid */
 
     --jet: hsl(0, 0%, 22%);
@@ -34,6 +33,7 @@
     --light-gray: hsl(0, 0%, 84%);
     --light-gray-70: hsla(0, 0%, 84%, 0.7);
     --bittersweet-shimmer: hsl(0, 43%, 51%);
+    --nav-bar-background: hsla(240, 1%, 17%, 0.75);
 
     /**
    * typography
