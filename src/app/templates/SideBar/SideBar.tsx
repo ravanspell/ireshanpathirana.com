@@ -6,6 +6,7 @@ import { faDownload, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import SocialLinks from "@/app/organisms/SoclialLinks/SoclialLinks";
 import Button from "@/app/atoms/Button/Button";
 import ProfileImage from "@/app/molecules/ProfileImage/ProfileImage";
+import NavBar from '@/app/organisms/NavBar/NavBar';
 
 const SideBar = (): JSX.Element => {
     return (
@@ -20,13 +21,7 @@ const SideBar = (): JSX.Element => {
                     <h2 className="text-2xl font-bold">Ireshan Pathirana</h2>
                     <p className="text-lg text-gray-400 font-light">Senior Software Engineer</p>
                 </div>
-                <nav>
-                    <ul className="flex flex-col items-center space-y-3">
-                        <li><a href="#about" className="text-white text-base font-medium transition-colors transform hover:text-orange-yellow-crayola hover:scale-110 active:text-orange-yellow-crayola mb-6">About</a></li>
-                        <li><a href="#portfolio" className="text-white text-base font-medium transition-colors transform hover:text-orange-yellow-crayola hover:scale-110 active:text-orange-yellow-crayola mb-6">Portfolio</a></li>
-                        <li><a href="#blog" className="text-white text-base font-medium transition-colors transform hover:text-orange-yellow-crayola hover:scale-110 active:text-orange-yellow-crayola mb-6">Blog</a></li>
-                    </ul>
-                </nav>
+                <NavBar />
                 {/* resume download dropdown */}
                 <div className="dropdown-select-wrapper">
                     <Button
@@ -36,7 +31,7 @@ const SideBar = (): JSX.Element => {
                     />
                 </div>
                 {/* social media links */}
-                <div className="flex items-center mt-10">
+                <div className="flex items-center">
                     <SocialLinks
                         socialIconsOptions={[
                             {
