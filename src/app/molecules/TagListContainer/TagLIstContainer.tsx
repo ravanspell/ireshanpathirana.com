@@ -11,7 +11,7 @@ const TagListContainer = (props: IIconProps) => {
     return (
         <ul id={listId} className="mt-2 flex flex-wrap" aria-label={areaLabel}>
             {tagLabels.map((label) => (
-                <li className="mr-1.5 mt-2">
+                <li key={`${listId}}-${label}`} className="mr-1.5 mt-2">
                     <Tag label={label} />
                 </li>
             ))}
