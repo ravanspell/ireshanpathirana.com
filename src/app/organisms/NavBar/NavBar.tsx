@@ -28,16 +28,16 @@ const NavBar = (): JSX.Element => {
             <ul className="flex md:flex-col items-center gap-8 md:gap-3">
                 <MainMenuItems menuItems={[
                     {
-                        href: '#about',
-                        label: 'About'
+                        href: '#aboutme',
+                        label: 'About Me'
                     },
                     {
                         href: '#experince',
                         label: 'Experince'
                     },
                     {
-                        href: '#services',
-                        label: 'Services'
+                        href: '#projects',
+                        label: 'Projects'
                     }
                 ]}
                 />
