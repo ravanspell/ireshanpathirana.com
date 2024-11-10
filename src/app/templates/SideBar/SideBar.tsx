@@ -16,7 +16,7 @@ const SideBar = (): JSX.Element => {
             aria-label="Main Navigation"
         >
             <div className='flex flex-col items-center gap-10'>
-                <ProfileImage id="my-profile-image" src="https://via.placeholder.com/150" />
+                <ProfileImage id="my-profile-image" src="https://media.licdn.com/dms/image/v2/D5603AQFnrwizlSlijw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1695574017144?e=1736985600&v=beta&t=r8lGyeayrfQuTpUikBozu_hqdhsZdYavrVrvRQMRyxw" />
                 <div className="">
                     <h2 className="text-2xl font-bold">Ireshan Pathirana</h2>
                     <p className="text-lg text-gray-400 font-light">Senior Software Engineer</p>
@@ -36,17 +36,17 @@ const SideBar = (): JSX.Element => {
                         socialIconsOptions={[
                             {
                                 title: 'gitHub',
-                                href: 'https://github.com',
+                                href: 'https://github.com/ravanspell',
                                 icon: faGithub
                             },
                             {
                                 title: 'linkedin',
-                                href: 'https://linkedin.com',
+                                href: 'https://www.linkedin.com/in/ireshan-pathirana',
                                 icon: faLinkedin
                             },
                             {
                                 title: 'Email to Ireshan',
-                                href: "mailto:ireshan@example.com",
+                                href: "mailto:contact@ireshanpathirana.com",
                                 icon: faEnvelope
                             },
                         ]}

@@ -7,7 +7,7 @@ import Section from '../../molecules/Section/Section';
 
 const AboutMeSection = ({mainContentRef}:{ mainContentRef: any}): JSX.Element => {
     return (
-        <Section mainContentRef={mainContentRef} id='about-me' headerText='About Me'>
+        <Section mainContentRef={mainContentRef} id='aboutme' headerText='About Me'>
             <Typography
                 id="this is id"
                 type="dfgdfgdfg"
