@@ -12,11 +12,14 @@ const SideBar = (): JSX.Element => {
     return (
         <aside
             id="sidebar"
-            className="sticky top-10 w-full md:w-96 bg-custom-eerie-black-2 border border-custom-jet rounded-lg p-7 shadow-custom-shadow-1 z-10"
+            className="sticky top-10 w-full lg:w-96 bg-custom-eerie-black-2 border border-custom-jet rounded-lg p-7 shadow-custom-shadow-1 z-10"
             aria-label="Main Navigation"
         >
             <div className='flex flex-col items-center gap-10'>
-                <ProfileImage id="my-profile-image" src="https://media.licdn.com/dms/image/v2/D5603AQFnrwizlSlijw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1695574017144?e=1736985600&v=beta&t=r8lGyeayrfQuTpUikBozu_hqdhsZdYavrVrvRQMRyxw" />
+                <ProfileImage
+                    id="my-profile-image"
+                    src="/dp.jpeg"
+                />
                 <div className="">
                     <h2 className="text-2xl font-bold">Ireshan Pathirana</h2>
                     <p className="text-lg text-gray-400 font-light">Senior Software Engineer</p>
