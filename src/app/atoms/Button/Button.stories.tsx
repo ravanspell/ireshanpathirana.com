@@ -13,7 +13,7 @@ type Story = StoryObj<typeof Button>;
 export const Primary: Story = {
   args: {
     icon: faArrowAltCircleDown,
-    label: 'Select color',
+    label: 'My button',
     onClick: () => {}
   },
 };

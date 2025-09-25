@@ -56,8 +56,7 @@ const ExperienceCard = (props: ExperienceCardProps): JSX.Element => {
                     </h4>
                     <Typography
                         id='experince-description-3'
-                        type=''
-                        tag='p'
+                        as='p'
                         text={shortDescription}
                     />
                     <TagListContainer

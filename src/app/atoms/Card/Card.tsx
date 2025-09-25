@@ -24,7 +24,6 @@ const Card = (props: CardProps): JSX.Element => {
         <div
             id={id}
             className={`${className}
-                relative
                 bg-border-gradient-onyx
                 p-4
                 rounded-[14px]
