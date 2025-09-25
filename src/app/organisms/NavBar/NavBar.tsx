@@ -35,10 +35,10 @@ const NavBar = (): JSX.Element => {
                         href: '#experince',
                         label: 'Experince'
                     },
-                    {
-                        href: '#projects',
-                        label: 'Projects'
-                    }
+                    // {
+                    //     href: '#projects',
+                    //     label: 'Projects'
+                    // }
                 ]}
                 />
             </ul>

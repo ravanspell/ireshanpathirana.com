@@ -1,11 +1,11 @@
 /**
- * Experince section
+ * Experience section
  */
 import Section from '../../molecules/Section/Section';
 import ExperienceCard from '@/app/molecules/ExperienceCard/ExperienceCard';
 
 
-const ExperinceSection = ({ mainContentRef }: { mainContentRef: any }): JSX.Element => {
+const ExperienceSection = ({ mainContentRef }: { mainContentRef: any }): JSX.Element => {
     return (
         <Section
             mainContentRef={mainContentRef}
@@ -83,4 +83,4 @@ const ExperinceSection = ({ mainContentRef }: { mainContentRef: any }): JSX.Elem
     );
 }
 
-export default ExperinceSection;
+export default ExperienceSection;

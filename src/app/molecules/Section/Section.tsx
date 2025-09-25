@@ -20,10 +20,14 @@ export interface SectionProps {
      */
     headerText: string
     mainContentRef: React.RefObject<Record<string, HTMLElement>>
+    /**
+     * additional CSS classes
+     */
+    className?: string
 }
 
 const Section = (props: SectionProps): JSX.Element => {
-    const { id, children, headerText, mainContentRef } = props;
+    const { id, children, headerText, mainContentRef, className = '' } = props;
     const handleSetupSectionRef = (ref: HTMLElement | null, id: string) => {
         if (mainContentRef.current && ref) {
             mainContentRef.current[id] = ref
@@ -32,14 +36,13 @@ const Section = (props: SectionProps): JSX.Element => {
     return (
         <section
             ref={(el) => handleSetupSectionRef(el, id)}
-            className="section mb-20 scroll-mt-10"
+            className={`section mb-20 px-4 pr-4 first:pt-4 md:px-8 md:pr-8 md:first:pt-8 scroll-mt-10 ${className}`.trim()}
             aria-label={id}
             id={id}
             >
             <header className="relative pb-2 mb-6">
                 <Typography
-                    type='ererer'
-                    tag='h2'
+                    variant='h2'
                     className='section-header-text uppercase text-md font-bold'
                     text={headerText}
                     id='section-header-text'

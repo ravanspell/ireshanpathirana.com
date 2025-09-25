@@ -7,11 +7,11 @@ export default function Home() {
     const mainContentRef = useRef<Record<string, HTMLElement>>({})
     return (
         <>
-            <div className="flex flex-col md:flex-row gap-5">
+            <div className="flex flex-col lg:flex-row gap-5 pb-20 md:pb-0">
                 <div className="pt-12">
                     <SideBar />
                 </div>
-                <div className="py-12">
+                <div className="pt-12">
                     <MainContent mainContentRef={mainContentRef} />
                 </div>
             </div>
