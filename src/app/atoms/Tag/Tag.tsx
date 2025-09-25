@@ -17,7 +17,7 @@ const Tag = (props: TagProps) => {
                 className="text-xs text-orange-yellow-crayola"
                 id={`${tagId}-tag-label`}
                 text={label}
-                type=""
+                variant="label"
             />
         </div>
     );
