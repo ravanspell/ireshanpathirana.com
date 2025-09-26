@@ -1,25 +1,29 @@
 /**
  * Experience section
  */
+import { RefObject } from 'react';
 import Section from '../../molecules/Section/Section';
 import ExperienceCard from '@/app/molecules/ExperienceCard/ExperienceCard';
 
+type ExperienceSectionProps = {
+    mainContentRef: RefObject<Record<string, HTMLElement>>
+}
 
-const ExperienceSection = ({ mainContentRef }: { mainContentRef: any }): JSX.Element => {
+const ExperienceSection = ({ mainContentRef }: ExperienceSectionProps): JSX.Element => {
     return (
         <Section
+            headerText='Experience'
             mainContentRef={mainContentRef}
-            id='experince'
-            headerText='Experince'
+            id='experience'
         >
             <div className='[&:not(:last-child)]:mb-5' >
                 <ExperienceCard
                     id='accenture'
                     date="2023 - Present"
-                    compaynyName='Accenture'
-                    designation='Senior Sofiware Engineer'
+                    companyName='Accenture'
+                    designation='Senior Software Engineer'
                     shortDescription='uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.'
-                    technlogiesTagLabels={[
+                    technologiesTagLabels={[
                         'JavaScript',
                         'Node.js',
                         'TypeScript',
@@ -35,10 +39,10 @@ const ExperienceSection = ({ mainContentRef }: { mainContentRef: any }): JSX.Ele
                 <ExperienceCard
                     id='eyepax-it'
                     date="2021 - 2023"
-                    compaynyName='Eyepax It Consultents'
-                    designation='Sofiware Engineer'
+                    companyName='Eyepax It Consultents'
+                    designation='Software Engineer'
                     shortDescription='uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.'
-                    technlogiesTagLabels={[
+                    technologiesTagLabels={[
                         'JavaScript',
                         'Node.js',
                         'TypeScript',
@@ -57,12 +61,12 @@ const ExperienceSection = ({ mainContentRef }: { mainContentRef: any }): JSX.Ele
                     ]}
                 />
                 <ExperienceCard
-                    id='axiata-digital-labs2'
+                    id='axiata-digital-labs'
                     date="2019 - 2021"
-                    compaynyName='Axiata Digital labs' 
-                    designation='Sofiware Engineer'
+                    companyName='Axiata Digital labs'
+                    designation='Software Engineer'
                     shortDescription='uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.'
-                    technlogiesTagLabels={[
+                    technologiesTagLabels={[
                         'JavaScript',
                         'Node.js',
                         'TypeScript',

@@ -1,9 +1,8 @@
 /**
- * About me section
+ * Main content container
  */
 import AboutMeSection from '@/app/organisms/AboutMeSection/AboutMeSection';
 import ExperienceSection from '@/app/organisms/ExperienceSection/ExperienceSection';
-import ProjectsSection from '@/app/organisms/ProjectsSection/ProjectsSection';
 
 
 const MainContent = ({mainContentRef}:{mainContentRef: any}): JSX.Element => {

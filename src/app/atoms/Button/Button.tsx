@@ -1,14 +1,8 @@
-/**
- * section component for hold section items
- */
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { MouseEventHandler } from 'react';
 
 export interface SectionProps {
-    /**
-     * 
-     */
     label: string
     icon: IconProp
     onClick: MouseEventHandler<HTMLButtonElement>

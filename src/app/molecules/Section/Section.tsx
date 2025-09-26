@@ -42,10 +42,10 @@ const Section = (props: SectionProps): JSX.Element => {
             >
             <header className="relative pb-2 mb-6">
                 <Typography
+                    id={`${id}-section-header-text`}
                     variant='h2'
                     className='section-header-text uppercase text-md font-bold'
                     text={headerText}
-                    id='section-header-text'
                 />
             </header>
             {children}

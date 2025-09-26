@@ -1,6 +1,3 @@
-/**
- * Typography control texts
- */
 
 export interface CardProps {
     /**
