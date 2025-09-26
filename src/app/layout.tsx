@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import ReactGA from "react-ga4"
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import '../styles/style.css';
+import { useEffect } from 'react'
 
 // font awesome initial styles disable (Specific to next.js)
 config.autoAddCss = false
@@ -31,6 +33,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  useEffect(() => {
+    ReactGA.initialize("G-X5X2WWLDX9");
+  }, []);
+  
   return (
     <html lang="en">
       <body className={inter.className}>
