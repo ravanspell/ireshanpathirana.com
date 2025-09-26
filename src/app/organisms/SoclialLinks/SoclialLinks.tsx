@@ -1,6 +1,3 @@
-/**
- * section component for hold section items
- */
 import SocialLinkIcon from '@/app/molecules/SocialLinkIcon/SocialLinkIcon';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
@@ -12,7 +9,7 @@ type socialIconsOptions = {
 
 export interface SectionProps {
     /**
-     * 
+     * Icons needs to be displayed
      */
     socialIconsOptions: socialIconsOptions[]
 }

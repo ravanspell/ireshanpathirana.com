@@ -1,6 +1,3 @@
-/**
- * Experince card to show my experince summary!
- */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '../../atoms/Card/Card';
 import Typography from '../../atoms/Typography/Typography';
@@ -20,8 +17,8 @@ export interface ExperienceCardProps {
     /**
      * Used technology tag labels
      */
-    technlogiesTagLabels: string[]
-    compaynyName: string
+    technologiesTagLabels: string[]
+    companyName: string
     designation: string
     shortDescription: string
 }
@@ -30,22 +27,22 @@ const ExperienceCard = (props: ExperienceCardProps): JSX.Element => {
     const { 
         date, 
         id, 
-        technlogiesTagLabels, 
-        compaynyName, 
+        technologiesTagLabels, 
+        companyName, 
         shortDescription,
         designation
     } = props;
     return (
-        <Card id={`article-card_${id}`}>
+        <Card id={`experience-card-${id}`}>
             <article
-                key={id}
+                key={`${id}-key`}
                 id={id}
                 className='grid grid-flow-row sm:grid-flow-col gap-x-10 gap-y-2 group'
             >
                 <span>{date}</span>
                 <div className='flex flex-col gap-y-2 '>
                     <h1 className="text-xl group-hover:text-orange-yellow-crayola">
-                        {compaynyName}
+                        {companyName}
                         <FontAwesomeIcon
                             className='text-sm ml-1 transition-transform -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1'
                             icon={faArrowRight}
@@ -55,13 +52,13 @@ const ExperienceCard = (props: ExperienceCardProps): JSX.Element => {
                         {designation}
                     </h4>
                     <Typography
-                        id='experince-description-3'
+                        id='experience-description-3'
                         as='p'
                         text={shortDescription}
                     />
                     <TagListContainer
-                        areaLabel={`technologies used in ${compaynyName}`}
-                        tagLabels={technlogiesTagLabels}
+                        areaLabel={`technologies used in ${companyName}`}
+                        tagLabels={technologiesTagLabels}
                     />
                 </div>
             </article>

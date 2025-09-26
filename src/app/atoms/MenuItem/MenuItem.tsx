@@ -2,9 +2,6 @@
  * Main menu item anchor link
  */
 export interface MenuItemsProps {
-    /**
-     * 
-     */
     label: string
     href: string
 }
