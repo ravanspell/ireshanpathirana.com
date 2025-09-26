@@ -2,7 +2,7 @@
  * section component for hold section items
  */
 import { ReactNode } from 'react';
-import Typography from '../../atoms/Typography/Typography';
+import Typography from '@atoms/Typography/Typography';
 import './Section.css';
 
 export interface SectionProps {

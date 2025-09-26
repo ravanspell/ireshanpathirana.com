@@ -1,4 +1,4 @@
-import MainMenuItems from "@/app/molecules/MainMenuItems/MainMenuItems";
+import MainMenuItems from "@molecules/MainMenuItems/MainMenuItems";
 
 const NavBar = (): JSX.Element => {
 

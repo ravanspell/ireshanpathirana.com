@@ -2,8 +2,8 @@
  * Experience section
  */
 import { RefObject } from 'react';
-import Section from '../../molecules/Section/Section';
-import ExperienceCard from '@/app/molecules/ExperienceCard/ExperienceCard';
+import Section from '@molecules/Section/Section';
+import ExperienceCard from '@molecules/ExperienceCard/ExperienceCard';
 
 type ExperienceSectionProps = {
     mainContentRef: RefObject<Record<string, HTMLElement>>

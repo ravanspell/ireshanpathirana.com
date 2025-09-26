@@ -1,4 +1,4 @@
-import Tag from "@/app/atoms/Tag/Tag";
+import Tag from "@atoms/Tag/Tag";
 
 export interface IIconProps {
     areaLabel: string

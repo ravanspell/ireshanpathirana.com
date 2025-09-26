@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Card from '../../atoms/Card/Card';
-import Typography from '../../atoms/Typography/Typography';
-import TagListContainer from '../TagListContainer/TagLIstContainer';
+import Card from '@atoms/Card/Card';
+import Typography from '@atoms/Typography/Typography';
+import TagListContainer from '@molecules/TagListContainer/TagLIstContainer';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export interface ExperienceCardProps {

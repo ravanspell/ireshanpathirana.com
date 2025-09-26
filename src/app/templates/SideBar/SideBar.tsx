@@ -3,10 +3,10 @@
  */
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faDownload, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import SocialLinks from "@/app/organisms/SoclialLinks/SoclialLinks";
-import Button from "@/app/atoms/Button/Button";
-import ProfileImage from "@/app/molecules/ProfileImage/ProfileImage";
-import NavBar from '@/app/organisms/NavBar/NavBar';
+import SocialLinks from "@organisms/SoclialLinks/SoclialLinks";
+import Button from "@atoms/Button/Button";
+import ProfileImage from "@molecules/ProfileImage/ProfileImage";
+import NavBar from '@organisms/NavBar/NavBar';
 
 const SideBar = (): JSX.Element => {
     return (

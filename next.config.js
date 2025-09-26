@@ -2,7 +2,7 @@
 const nextConfig = {
     output: 'export',
     images: {
-        //TODO: temporarly provitioned
+        //TODO: temporary provisioned
         unoptimized: true,
         // remotePatterns: [
         //     {

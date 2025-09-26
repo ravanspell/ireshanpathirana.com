@@ -1,8 +1,8 @@
 /**
- * About me section
+ * Projects section
  */
-import Typography from '../../atoms/Typography/Typography';
-import Section from '../../molecules/Section/Section';
+import Typography from '@atoms/Typography/Typography';
+import Section from '@molecules/Section/Section';
 
 
 const ProjectsSection = ({ mainContentRef }: { mainContentRef: any }): JSX.Element => {

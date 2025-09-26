@@ -1,7 +1,7 @@
 /**
  * Tag component
  */
-import Typography from "../Typography/Typography";
+import Typography from "@atoms/Typography/Typography";
 
 export interface TagProps {
     id?: string

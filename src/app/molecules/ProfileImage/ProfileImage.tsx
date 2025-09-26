@@ -1,18 +1,10 @@
-/**
- * Typography control texts
- */
-
 import Image from "next/image";
 
 export interface ProfileImageProps {
     /**
-     * text content of the card
+     * link to the profile image
      */
     src: string
-    /**
-     * id of the text element
-     * for unit tests and custom styles
-     */
     id: string
 }
 

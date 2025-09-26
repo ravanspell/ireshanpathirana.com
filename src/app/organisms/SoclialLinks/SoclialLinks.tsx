@@ -1,4 +1,4 @@
-import SocialLinkIcon from '@/app/molecules/SocialLinkIcon/SocialLinkIcon';
+import SocialLinkIcon from '@molecules/SocialLinkIcon/SocialLinkIcon';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 type socialIconsOptions = {

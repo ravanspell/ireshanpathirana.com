@@ -1,6 +1,6 @@
+import { MouseEventHandler } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { MouseEventHandler } from 'react';
 
 export interface SectionProps {
     label: string

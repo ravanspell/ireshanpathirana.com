@@ -1,7 +1,7 @@
 "use client"
-import MainContent from "./templates/MainContent/MainContent";
+import MainContent from "@templates/MainContent/MainContent";
 import { useRef } from "react";
-import SideBar from "./templates/SideBar/SideBar";
+import SideBar from "@templates/SideBar/SideBar";
 
 export default function Home() {
     const mainContentRef = useRef<Record<string, HTMLElement>>({})

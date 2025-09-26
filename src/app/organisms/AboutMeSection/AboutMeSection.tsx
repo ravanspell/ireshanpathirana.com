@@ -2,8 +2,8 @@
  * About me section
  */
 import { RefObject } from 'react';
-import Typography from '../../atoms/Typography/Typography';
-import Section from '../../molecules/Section/Section';
+import Typography from '@atoms/Typography/Typography';
+import Section from '@molecules/Section/Section';
 
 type AboutMeSectionProps = {
     mainContentRef: RefObject<Record<string, HTMLElement>>

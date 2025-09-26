@@ -1,4 +1,4 @@
-import MenuItem from "@/app/atoms/MenuItem/MenuItem";
+import MenuItem from "@atoms/MenuItem/MenuItem";
 
 /**
  * Main menu items

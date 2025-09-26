@@ -1,7 +1,7 @@
 /**
  * section component for hold section items
  */
-import Card from '@/app/atoms/Card/Card';
+import Card from '@atoms/Card/Card';
 import Image from 'next/image';
 
 export interface TechStackProps {
