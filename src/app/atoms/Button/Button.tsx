@@ -1,20 +1,22 @@
+import { ButtonHTMLAttributes, MouseEventHandler } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { MouseEventHandler } from 'react';
 
 export interface SectionProps {
-    label: string
-    icon: IconProp
-    onClick: MouseEventHandler<HTMLButtonElement>
+  label: string;
+  icon: IconProp;
+  onClick: MouseEventHandler<HTMLButtonElement>;
+  buttonAttributes?: ButtonHTMLAttributes<HTMLButtonElement>;
+  testId?: string;
 }
 
-const Button = (props: SectionProps): JSX.Element => {
-    const { label, icon, onClick } = props;
+const Button = (props: SectionProps) => {
+  const { label, icon, onClick, buttonAttributes, testId } = props;
 
-    return (
-        <button
-            className="
-            relative 
+  return (
+    <button
+      data-testid={testId}
+      className="
             w-full 
             flex 
             justify-center 
@@ -23,42 +25,24 @@ const Button = (props: SectionProps): JSX.Element => {
             px-5 
             py-3.25 
             rounded-[14px] 
-            text-orange-yellow-crayola 
+            text-vegas-gold
             bg-gradient-onyx 
             capitalize 
-            shadow-[var(--shadow-3)] 
-            z-[1] 
-            transition-[var(--transition-1)] 
-            hover:bg-gradient-yellow-1)] 
-
-            before:content-['']
-            before:absolute
-            before:inset-px
-            before:bg-gradient-jet
-            before:rounded-[14px]
-            before:-z-[1]
-
-            hover:before:bg-gradient-yellow-2
+            shadow-(--shadow-3)
+            z-1 
+            hover:text-orange-yellow-crayola
+            transition-colors
+            duration-300
+            cursor-pointer
             "
-            type='button'
-            onClick={onClick}
-        >
-            <FontAwesomeIcon icon={icon} />
-            {label}
-            <span
-                className="
-                absolute 
-                inset-[1px]
-                rounded-inherit z-[-1] 
-                transition-[var(--transition-1)] 
-                hover:bg-[var(--bg-gradient-yellow-2)] 
-                disabled:hover:bg-[var(--bg-gradient-jet)]
-                "
-            >
-            </span>
-        </button>
-
-    );
+      type="button"
+      onClick={onClick}
+      {...buttonAttributes}
+    >
+      {icon && <FontAwesomeIcon icon={icon} />}
+      {label}
+    </button>
+  );
 };
 
 export default Button;

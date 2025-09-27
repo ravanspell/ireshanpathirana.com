@@ -1,18 +1,16 @@
-/**
- * Main menu item anchor link
- */
-export interface MenuItemsProps {
-    label: string
-    href: string
+export interface MenuItemProps {
+  label: string;
+  href: string;
 }
 
-const MenuItem = (props: MenuItemsProps): JSX.Element => {
-    const { label, href } = props;
+const MenuItem = (props: MenuItemProps) => {
+  const { label, href } = props;
 
-    return (
-        <li>
-            <a href={href}
-                className="
+  return (
+    <li>
+      <a
+        href={href}
+        className="
                 text-white 
                 text-base 
                 font-medium 
@@ -22,11 +20,11 @@ const MenuItem = (props: MenuItemsProps): JSX.Element => {
                 hover:scale-110 
                 active:text-orange-yellow-crayola 
                 mb-6"
-            >
-                {label}
-            </a>
-        </li>
-    );
+      >
+        {label}
+      </a>
+    </li>
+  );
 };
 
 export default MenuItem;
