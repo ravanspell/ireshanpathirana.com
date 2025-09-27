@@ -1,7 +1,9 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // change the build folder to build
+  // from .next folder
+  distDir: 'build',
 };
 
 export default nextConfig;
