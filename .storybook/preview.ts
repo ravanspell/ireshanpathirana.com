@@ -1,13 +1,12 @@
-import type { Preview } from "@storybook/react";
+
+import type { Preview } from '@storybook/nextjs';
 
 const preview: Preview = {
-  //👇 Enables auto-generated documentation for all stories
-  tags: ['autodocs'],
   parameters: {
     controls: {
       matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
+       color: /(background|color)$/i,
+       date: /Date$/i,
       },
     },
   },
