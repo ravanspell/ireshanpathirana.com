@@ -37,10 +37,10 @@ const NavBar = () => {
               href: '#experience',
               label: 'Experience',
             },
-            // {
-            //     href: '#projects',
-            //     label: 'Projects'
-            // }
+            {
+              href: '#certifications',
+              label: 'Certifications',
+            },
           ]}
         />
       </ul>
