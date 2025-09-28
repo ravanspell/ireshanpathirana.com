@@ -41,7 +41,7 @@ const Section = (props: SectionProps) => {
         <Typography
           id={`${id}-section-header-text`}
           variant="h2"
-          className="section-header-text uppercase text-md font-bold"
+          className="section-header-text uppercase text-lg font-bold"
           text={headerText}
         />
       </header>

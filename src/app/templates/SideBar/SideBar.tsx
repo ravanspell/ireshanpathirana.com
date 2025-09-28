@@ -17,9 +17,9 @@ const SideBar = () => {
       aria-label="Main Navigation"
     >
       <div className="flex flex-col items-center gap-10">
-        <ProfileImage id="my-profile-image" src="/dp.jpeg" />
-        <div className="">
-          <Typography variant="h2" className="text-2xl font-bold" text="Ireshan Pathirana" />
+        <ProfileImage id="my-profile-image" src="/images/dp.jpeg" />
+        <div className="flex flex-col items-center">
+          <Typography variant="h2" className="text-3xl font-bold" text="Ireshan Pathirana" />
           <Typography
             as="p"
             className="text-lg text-gray-400 font-light"
