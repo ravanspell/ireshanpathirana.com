@@ -18,6 +18,7 @@ const ExperienceSection = ({ mainContentRef }: ExperienceSectionProps) => {
           date="2023 - Present"
           companyName="Accenture"
           designation="Senior Software Engineer"
+          companyWebsiteLink="https://www.accenture.com/sg-en"
           shortDescription="uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility."
           technologiesTagLabels={[
             'JavaScript',
@@ -37,6 +38,7 @@ const ExperienceSection = ({ mainContentRef }: ExperienceSectionProps) => {
           date="2021 - 2023"
           companyName="Eyepax It Consultents"
           designation="Software Engineer"
+          companyWebsiteLink="https://eyepax.com"
           shortDescription="uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility."
           technologiesTagLabels={[
             'JavaScript',
@@ -61,6 +63,7 @@ const ExperienceSection = ({ mainContentRef }: ExperienceSectionProps) => {
           date="2019 - 2021"
           companyName="Axiata Digital labs"
           designation="Software Engineer"
+          companyWebsiteLink="https://www.axiatadigitallabs.com"
           shortDescription="uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility."
           technologiesTagLabels={[
             'JavaScript',

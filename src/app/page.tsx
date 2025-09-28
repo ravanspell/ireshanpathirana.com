@@ -11,7 +11,7 @@ export default function Home() {
       <div className="pt-12">
         <SideBar />
       </div>
-      <div className="pt-12">
+      <div className="pt-4 lg:pt-12">
         <MainContent mainContentRef={mainContentRef} />
       </div>
     </div>
