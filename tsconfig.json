@@ -21,10 +21,10 @@
     "paths": {
       "@/*": ["./src/*"],
       "@styles/*": ["./src/styles/*"],
-      "@atoms/*": ["./src/app/atoms/*"],
-      "@molecules/*": ["./src/app/molecules/*"],
-      "@organisms/*": ["./src/app/organisms/*"],
-      "@templates/*": ["./src/app/templates/*"]
+      "@atoms/*": ["./src/components/atoms/*"],
+      "@molecules/*": ["./src/components/molecules/*"],
+      "@organisms/*": ["./src/components/organisms/*"],
+      "@templates/*": ["./src/components/templates/*"]
     }
   },
   "include": [

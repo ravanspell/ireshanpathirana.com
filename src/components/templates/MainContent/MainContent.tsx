@@ -6,7 +6,7 @@
 import { RefObject } from 'react';
 import AboutMeSection from '@organisms/AboutMeSection/AboutMeSection';
 import ExperienceSection from '@organisms/ExperienceSection/ExperienceSection';
-import CertificationsSection from '@/app/organisms/Certifications/CertificationsSection';
+import CertificationsSection from '@organisms/Certifications/CertificationsSection';
 
 type MainContentProps = {
   mainContentRef: RefObject<Record<string, HTMLElement>>;
