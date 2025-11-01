@@ -17,19 +17,33 @@ const Button = (props: SectionProps) => {
     <button
       data-testid={testId}
       className="
-            w-full 
-            flex 
-            justify-center 
-            items-center 
-            gap-2.5 
-            px-5 
-            py-3.25 
-            rounded-[14px] 
-            text-vegas-gold
-            bg-gradient-onyx 
-            capitalize 
-            shadow-(--shadow-3)
-            z-1 
+           relative 
+           justify-center 
+           cursor-pointer 
+           inline-flex 
+           items-center 
+           space-x-2 
+           text-center 
+           font-regular 
+           ease-out
+           rounded-md 
+           outline-none 
+           transition-all 
+           outline-0 
+           focus-visible:outline-4 
+           focus-visible:outline-offset-1 
+           border 
+           text-foreground 
+           bg-alternative 
+           dark:bg-muted 
+           hover:bg-selection
+            border-strong 
+            hover:border-stronger 
+            focus-visible:outline-brand-600 
+            text-xs 
+            px-2.5 
+            py-1 
+      
             hover:text-orange-yellow-crayola
             transition-colors
             duration-300

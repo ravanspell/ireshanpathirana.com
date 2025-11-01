@@ -1,20 +1,31 @@
-/**
- * Server-side Supabase client for Next.js App Router.
- *
- * Use this in Server Components, Layouts, and Server Actions.
- * Handles SSR auth using cookies (with @supabase/ssr).
- * Ensures user sessions persist between requests.
- */
-
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
+/**
+ * Create Supabase Client for Server Components and Server Actions
+ *
+ * Creates a Supabase client for use in:
+ * - Server Components
+ * - Server Actions
+ * - Route Handlers
+ *
+ * @returns Supabase client instance
+ *
+ * @example
+ * // In a server action
+ * import { createClient } from '@/utils/supabase/server'
+ *
+ * export async function myAction() {
+ *   const supabase = await createClient()
+ *   const { data } = await supabase.auth.getUser()
+ * }
+ */
 export async function createClient() {
   const cookieStore = await cookies();
 
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
     {
       cookies: {
         getAll() {
