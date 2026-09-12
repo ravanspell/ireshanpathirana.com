@@ -15,6 +15,7 @@ import CodeTool from "@editorjs/code";
 import List from "@editorjs/list";
 import { useIsMounted } from "@/utils/hooks/useMounted";
 import { Button } from "@/components/ui/button";
+import TagInput from "@molecules/TagInput/TagInput";
 import { slugify } from "@lib/slug";
 
 // Custom interface for Editor.js instance
@@ -31,6 +32,10 @@ interface EditorClientProps {
     initialTitle?: string;
     initialSlug?: string;
     initialPublished?: boolean;
+    /** Tag names already on the post. */
+    initialTags?: string[];
+    /** Every tag that exists, for autocomplete. */
+    tagSuggestions?: string[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     initialData?: any;
 }
@@ -40,6 +45,8 @@ export default function EditorClient({
     initialTitle = "",
     initialSlug = "",
     initialPublished = false,
+    initialTags = [],
+    tagSuggestions = [],
     initialData,
 }: EditorClientProps) {
     const isMounted = useIsMounted();
@@ -49,6 +56,7 @@ export default function EditorClient({
     const [saveError, setSaveError] = useState<string | null>(null);
     const [title, setTitle] = useState(initialTitle);
     const [slug, setSlug] = useState(initialSlug);
+    const [tags, setTags] = useState<string[]>(initialTags);
     // Stops deriving from the title once the author edits the slug by hand, so
     // renaming a published post doesn't silently change its URL.
     const [slugTouched, setSlugTouched] = useState(Boolean(initialSlug));
@@ -144,6 +152,7 @@ export default function EditorClient({
                     slug: finalSlug,
                     content: outputData,
                     published,
+                    tagNames: tags,
                 });
 
                 if (!result?.success) {
@@ -158,7 +167,11 @@ export default function EditorClient({
                 }
 
                 setSaveError(null);
+                // Both come back normalised by the server — the slug may have
+                // been derived, and tag names resolve to whatever spelling the
+                // existing tag rows use.
                 setSlug(result.data.slug);
+                setTags(result.data.tags.map((tag) => tag.name));
                 setStatus("done");
             });
         } catch (error) {
@@ -200,6 +213,19 @@ export default function EditorClient({
                         className="flex-1 rounded-md border border-input bg-background px-3 py-2 font-mono text-sm"
                     />
                 </div>
+            </div>
+
+            <div className="space-y-2">
+                <label className="block text-sm font-medium" htmlFor="post-tags">
+                    Tags
+                </label>
+                <TagInput
+                    id="post-tags"
+                    value={tags}
+                    onChange={setTags}
+                    suggestions={tagSuggestions}
+                    disabled={isPending}
+                />
             </div>
 
             <div

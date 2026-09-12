@@ -1,19 +1,26 @@
-import { Tag as TagType } from "@generated/prisma/client";
+import type { Tag as TagRow } from '@generated/prisma/client';
 
 /**
  * Tag Domain Model
- * Represents a tag entity for categorizing blog posts
+ * Represents a tag entity for categorizing blog posts.
+ *
+ * Plain data rather than a class — see the note on `Post`.
  */
-export class Tag implements Partial<TagType> {
+export interface Tag {
   id: string;
   name: string;
   slug: string;
   createdAt: Date;
+}
 
-  constructor(data: TagType) {
-    this.id = data.id;
-    this.name = data.name;
-    this.slug = data.slug;
-    this.createdAt = data.createdAt;
-  }
+/**
+ * Map a tag row to the model.
+ */
+export function toTag(row: TagRow): Tag {
+  return {
+    id: row.id,
+    name: row.name,
+    slug: row.slug,
+    createdAt: row.createdAt,
+  };
 }

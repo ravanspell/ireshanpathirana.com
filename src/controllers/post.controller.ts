@@ -25,7 +25,7 @@ export class PostController extends BaseController {
         title: formData.get('title') as string,
         slug: formData.get('slug') as string,
         content: formData.get('content') as string,
-        tagIds: formData.get('tagIds') ? JSON.parse(formData.get('tagIds') as string) : [],
+        tagNames: formData.getAll('tagNames') as string[],
       };
 
       // Validate with Zod
@@ -56,7 +56,9 @@ export class PostController extends BaseController {
         title: formData.get('title') as string,
         slug: formData.get('slug') as string,
         content: formData.get('content') as string,
-        tagIds: formData.get('tagIds') ? JSON.parse(formData.get('tagIds') as string) : undefined,
+        // Absent means "leave the tags as they are", so an empty field list
+        // must stay undefined rather than becoming an empty array.
+        tagNames: formData.has('tagNames') ? (formData.getAll('tagNames') as string[]) : undefined,
       };
 
       // Validate with Zod

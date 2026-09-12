@@ -2,6 +2,7 @@ import { Injectable, inject } from '@lib/di/injectable';
 import { BaseService } from './base.service';
 import { AuthService } from './auth.service';
 import { PostRepository } from '@repositories/post.repository';
+import { TagRepository } from '@repositories/tag.repository';
 import { CreatePostDto, UpdatePostDto, UpsertPostDto } from '@dtos/post.dto';
 import { deriveExcerpt } from '@lib/editor-content';
 
@@ -13,6 +14,12 @@ import { deriveExcerpt } from '@lib/editor-content';
 export class PostService extends BaseService {
   constructor(
     @inject(PostRepository) private postRepository: PostRepository,
+    // A post and its tags are saved as one unit, so this service owns both
+    // writes. Going through `TagService` instead would only re-run the
+    // authorisation `requireAuthorId()` has already done — an extra Supabase
+    // round trip per save — for rules that don't apply to tags created as a
+    // side effect of saving a post.
+    @inject(TagRepository) private tagRepository: TagRepository,
     @inject(AuthService) private authService: AuthService,
   ) {
     super();
@@ -41,6 +48,19 @@ export class PostService extends BaseService {
   private publishedAtFor(published: boolean, existing: Date | null): Date | null {
     if (!published) return existing;
     return existing ?? new Date();
+  }
+
+  /**
+   * The editor sends tag names; the join table stores ids. Names that don't
+   * match an existing tag are created here, so an author never has to register
+   * a tag before using it.
+   */
+  private async resolveTagIds(names: string[]): Promise<string[]> {
+    if (names.length === 0) return [];
+
+    const tags = await this.tagRepository.findOrCreateManyByName(names);
+
+    return tags.map((tag) => tag.id);
   }
 
   // ---------- Public reads ----------
@@ -121,11 +141,14 @@ export class PostService extends BaseService {
       this.conflict('A post with this slug already exists');
     }
 
+    const { tagNames, ...fields } = data;
+
     return this.postRepository.create({
-      ...data,
+      ...fields,
       authorId,
       excerpt: deriveExcerpt(data.content),
       publishedAt: this.publishedAtFor(data.published, null),
+      tagIds: await this.resolveTagIds(tagNames),
     });
   }
 
@@ -147,11 +170,19 @@ export class PostService extends BaseService {
 
     const published = data.published ?? existing.published;
 
+    // Listed field by field rather than spread: `UpdatePostDto` carries the
+    // post's own `id`, and spreading it would hand Prisma a no-op write of the
+    // primary key.
     return this.postRepository.update(id, {
-      ...data,
+      title: data.title,
+      slug: data.slug,
+      content: data.content,
+      published: data.published,
       // Only recompute the preview when the content actually changed.
-      ...(data.content ? { excerpt: deriveExcerpt(data.content) } : {}),
+      excerpt: data.content ? deriveExcerpt(data.content) : undefined,
       publishedAt: this.publishedAtFor(published, existing.publishedAt),
+      // Undefined leaves the existing tags alone; `[]` clears them.
+      tagIds: data.tagNames === undefined ? undefined : await this.resolveTagIds(data.tagNames),
     });
   }
 

@@ -38,6 +38,15 @@ const slug = z
   .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Slug must be lowercase with hyphens only');
 
 /**
+ * Tags are addressed by name, not id: the editor is a free-text field, and a
+ * name the author types may not exist yet. `PostService` resolves each name to
+ * a tag row — creating the missing ones — before the join table is written.
+ */
+const tagNames = z
+  .array(z.string().trim().min(1, 'A tag cannot be empty').max(50, 'Tag must be less than 50 characters'))
+  .max(10, 'A post can have at most 10 tags');
+
+/**
  * Create Post Schema
  * Validation for creating a new blog post
  */
@@ -46,7 +55,7 @@ export const createPostSchema = z.object({
   slug,
   content: editorContentSchema,
   published: z.boolean().optional().default(false),
-  tagIds: z.array(z.string()).optional().default([]),
+  tagNames: tagNames.optional().default([]),
 });
 
 /**
@@ -59,7 +68,8 @@ export const updatePostSchema = z.object({
   slug: slug.optional(),
   content: editorContentSchema.optional(),
   published: z.boolean().optional(),
-  tagIds: z.array(z.string()).optional(),
+  /** Omitted leaves the post's tags untouched; `[]` clears them. */
+  tagNames: tagNames.optional(),
 });
 
 /**
@@ -72,7 +82,7 @@ export const upsertPostSchema = z.object({
   slug,
   content: editorContentSchema,
   published: z.boolean().optional().default(false),
-  tagIds: z.array(z.string()).optional().default([]),
+  tagNames: tagNames.optional().default([]),
 });
 
 /**

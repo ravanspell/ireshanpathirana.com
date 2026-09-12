@@ -1,6 +1,6 @@
 import type { Post as PostRow, Tag as TagRow } from '@generated/prisma/client';
 import type { EditorContent } from '@dtos/post.dto';
-import { Tag } from './tag.model';
+import { toTag, type Tag } from './tag.model';
 
 /**
  * Shape the repository actually selects: a post row, optionally with its join
@@ -13,9 +13,10 @@ export type PostRowWithTags = Omit<PostRow, 'content'> & {
 
 /**
  * Post Domain Model
- * Represents a blog post entity
+ * Represents a blog post entity.
+ *
  */
-export class Post {
+export interface Post {
   id: string;
   title: string;
   slug: string;
@@ -33,20 +34,25 @@ export class Post {
   updatedAt: Date;
   /** Flattened from the `PostTag` join rows. Empty when tags weren't included. */
   tags: Tag[];
+}
 
-  constructor(data: PostRowWithTags) {
-    this.id = data.id;
-    this.title = data.title;
-    this.slug = data.slug;
+/**
+ * Map a post row — with its join rows, where they were included — to the model.
+ */
+export function toPost(row: PostRowWithTags): Post {
+  return {
+    id: row.id,
+    title: row.title,
+    slug: row.slug,
     // Prisma types a `Json` column as `JsonValue`; the shape was validated by
     // `editorContentSchema` on the way in.
-    this.content = data.content as EditorContent | undefined;
-    this.excerpt = data.excerpt;
-    this.published = data.published;
-    this.publishedAt = data.publishedAt;
-    this.authorId = data.authorId;
-    this.createdAt = data.createdAt;
-    this.updatedAt = data.updatedAt;
-    this.tags = data.tags?.map((pt) => new Tag(pt.tag)) ?? [];
-  }
+    content: row.content as EditorContent | undefined,
+    excerpt: row.excerpt,
+    published: row.published,
+    publishedAt: row.publishedAt,
+    authorId: row.authorId,
+    createdAt: row.createdAt,
+    updatedAt: row.updatedAt,
+    tags: row.tags?.map((pt) => toTag(pt.tag)) ?? [],
+  };
 }

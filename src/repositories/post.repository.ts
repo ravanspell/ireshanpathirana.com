@@ -2,7 +2,7 @@ import { Injectable, inject } from '@lib/di/injectable';
 import { Prisma } from '@generated/prisma/client';
 import { Db } from '@lib/db';
 import { BaseRepository } from './base.repository';
-import { Post } from '@models/post.model';
+import { toPost } from '@models/post.model';
 import { CreatePostDto, EditorContent, UpdatePostDto } from '@dtos/post.dto';
 
 /**
@@ -18,6 +18,25 @@ function asJson(content: EditorContent): Prisma.InputJsonObject {
   return content as unknown as Prisma.InputJsonObject;
 }
 
+/**
+ * Posts arrive here with their tags already resolved to ids — the join table
+ * stores ids, and turning the editor's tag names into rows is the service's
+ * job (`PostService.resolveTagIds`), not a second write buried in here.
+ */
+type CreatePostData = Omit<CreatePostDto, 'tagNames'> & {
+  authorId: string;
+  excerpt: string | null;
+  publishedAt: Date | null;
+  tagIds: string[];
+};
+
+type UpdatePostData = Partial<Omit<UpdatePostDto, 'id' | 'tagNames'>> & {
+  excerpt?: string | null;
+  publishedAt?: Date | null;
+  /** Undefined leaves the post's tags untouched; an array replaces them. */
+  tagIds?: string[];
+};
+
 @Injectable()
 export class PostRepository extends BaseRepository {
   constructor(@inject(Db) private db: Db) {
@@ -27,9 +46,7 @@ export class PostRepository extends BaseRepository {
   /**
    * Create a new post
    */
-  async create(
-    data: CreatePostDto & { authorId: string; excerpt: string | null; publishedAt: Date | null },
-  ) {
+  async create(data: CreatePostData) {
     const { tagIds, ...postData } = data;
 
     const post = await this.db.post.create({
@@ -53,7 +70,7 @@ export class PostRepository extends BaseRepository {
       },
     });
 
-    return new Post(post);
+    return toPost(post);
   }
 
   /**
@@ -71,7 +88,7 @@ export class PostRepository extends BaseRepository {
       },
     });
 
-    return post ? new Post(post) : null;
+    return post ? toPost(post) : null;
   }
 
   /**
@@ -95,7 +112,7 @@ export class PostRepository extends BaseRepository {
       },
     });
 
-    return post ? new Post(post) : null;
+    return post ? toPost(post) : null;
   }
 
   /**
@@ -135,16 +152,13 @@ export class PostRepository extends BaseRepository {
       orderBy: options?.publishedOnly ? { publishedAt: direction } : { createdAt: direction },
     });
 
-    return posts.map((post) => new Post(post));
+    return posts.map(toPost);
   }
 
   /**
    * Update a post
    */
-  async update(
-    id: string,
-    data: Partial<UpdatePostDto> & { excerpt?: string | null; publishedAt?: Date | null },
-  ) {
+  async update(id: string, data: UpdatePostData) {
     // `content` is pulled out of the spread so the Prisma-shaped value below is
     // the only one in the object type, not a union with the validated one.
     const { tagIds, content, ...updateData } = data;
@@ -175,7 +189,7 @@ export class PostRepository extends BaseRepository {
       },
     });
 
-    return new Post(post);
+    return toPost(post);
   }
 
   /**
