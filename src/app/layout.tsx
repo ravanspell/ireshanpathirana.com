@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="container max-w-screen-xl">{children}</div>
+        <div className="container max-w-7xl">{children}</div>
       </body>
     </html>
   );

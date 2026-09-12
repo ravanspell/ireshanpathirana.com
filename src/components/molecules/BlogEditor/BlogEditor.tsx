@@ -8,14 +8,11 @@ import {
     useTransition
 } from "react";
 import { saveArticleAction } from "@/app/actions/artical";
-import type { OutputData, ToolConstructable} from "@editorjs/editorjs";
-import Header from "@editorjs/header";
-import Paragraph from "@editorjs/paragraph";
-import CodeTool from "@editorjs/code";
-import List from "@editorjs/list";
+import type { OutputData } from "@editorjs/editorjs";
 import { useIsMounted } from "@/utils/hooks/useMounted";
 import { Button } from "@/components/ui/button";
 import TagInput from "@molecules/TagInput/TagInput";
+import { loadEditorTools } from "@lib/editor-tools";
 import { slugify } from "@lib/slug";
 
 // Custom interface for Editor.js instance
@@ -72,43 +69,29 @@ export default function EditorClient({
     // rebuild the editor continuously.
     const initiateEditorJs = useCallback(async () => {
         const EditorJS = (await import("@editorjs/editorjs")).default;
-        const ImageTool = (await import("@editorjs/image")).default;
 
         const editor = new EditorJS({
             holder: "editorjs",
             autofocus: true,
             placeholder: "Start writing your story...",
             data: initialData,
-            tools: {
-                list: List,
-                header: {
-                    class: Header as unknown as ToolConstructable,
-                    inlineToolbar: true,
-                },
-                paragraph: {
-                    class: Paragraph as unknown as ToolConstructable,
-                    inlineToolbar: true
-                },
-                image: {
-                    class: ImageTool,
-                    config: {
-                        uploader: {
-                            uploadByFile(file: File) {
-                                console.log("file ---->", file);
-                                return new Promise((resolve) => {
-                                    setTimeout(() => {
-                                        resolve({
-                                            success: 1,
-                                            file: { url: "https://placekitten.com/400/300" },
-                                        });
-                                    }, 800);
+            // Shared with `CMSViewer` so a block type that saves here is always
+            // a block type the public post page can render.
+            tools: await loadEditorTools({
+                imageUploader: {
+                    uploadByFile(file: Blob) {
+                        console.log("file ---->", file);
+                        return new Promise((resolve) => {
+                            setTimeout(() => {
+                                resolve({
+                                    success: 1,
+                                    file: { url: "https://placekitten.com/400/300" },
                                 });
-                            },
-                        },
+                            }, 800);
+                        });
                     },
                 },
-                code: CodeTool,
-            },
+            }),
             onReady: () => {
                 editorRef.current = editor;
             },
