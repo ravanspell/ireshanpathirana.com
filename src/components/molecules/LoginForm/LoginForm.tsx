@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import Input from '@/components/atoms/Input/Input';
-import { loginSchema, LoginFormData } from '@/lib/validations/auth';
+import { loginSchema, LoginFormData } from '@dtos/auth.dto';
 
 export interface LoginFormProps {
   /**
@@ -20,7 +20,7 @@ export interface LoginFormProps {
 /**
  * LoginForm Component
  *
- * A complete login form with client-side validation using React Hook Form and Yup.
+ * A complete login form with client-side validation using React Hook Form and Zod.
  */
 const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const [serverError, setServerError] = useState<string | undefined>();
@@ -31,7 +31,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormData>({
-    resolver: yupResolver(loginSchema),
+    resolver: zodResolver(loginSchema),
     mode: 'onBlur', // Validates when user leaves a field (better UX)
   });
 
@@ -55,7 +55,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
       if (result?.error) {
         setServerError(result.error);
       }
-    } catch (error: unknown) {
+    } catch {
       setServerError('An unexpected error occurred');
     } finally {
       setIsSubmitting(false);

@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+import { z } from 'zod';
 
 /**
  * Login Validation Schema
@@ -13,29 +13,35 @@ import * as yup from 'yup';
  * @example
  * // Client-side with React Hook Form
  * const { register, handleSubmit } = useForm({
- *   resolver: yupResolver(loginSchema)
+ *   resolver: zodResolver(loginSchema)
  * });
  *
  * @example
  * // Server-side validation
- * try {
- *   await loginSchema.validate({ email, password });
- * } catch (error) {
+ * const result = loginSchema.safeParse({ email, password });
+ * if (!result.success) {
  *   // Handle validation errors
  * }
  */
-export const loginSchema = yup.object({
-  /** User's email address - must be valid email format */
-  email: yup
+export const loginSchema = z.object({
+  /**
+   * User's email address - must be valid email format.
+   *
+   * Trimmed before the format check, not after: string checks run in chain
+   * order, so a trailing `.trim()` would have validated the raw input and
+   * rejected " user@example.com ". `z.email()` is piped rather than chained
+   * because `.email()` on a string schema is deprecated in Zod 4.
+   */
+  email: z
     .string()
-    .required('Email is required')
-    .email('Please enter a valid email address')
-    .trim(),
+    .trim()
+    .min(1, 'Email is required')
+    .pipe(z.email('Please enter a valid email address')),
 
   /** User's password - minimum 6 characters */
-  password: yup
+  password: z
     .string()
-    .required('Password is required')
+    .min(1, 'Password is required')
     .min(6, 'Password must be at least 6 characters'),
 });
 
@@ -44,9 +50,5 @@ export const loginSchema = yup.object({
  *
  * TypeScript type automatically inferred from the login schema.
  * Ensures type safety across the application.
- *
- * @typedef {Object} LoginFormData
- * @property {string} email - User's email address
- * @property {string} password - User's password
  */
-export type LoginFormData = yup.InferType<typeof loginSchema>;
+export type LoginFormData = z.infer<typeof loginSchema>;

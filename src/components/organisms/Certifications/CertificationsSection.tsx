@@ -38,6 +38,15 @@ const CertificationsSection = ({ mainContentRef }: CertificationsSectionProps) =
       credentialsLink:
         'https://stripecertifications.credential.net/6beca4c1-bfcb-41a4-af6f-c5aa7e09959b#acc.QZ2UxdrH',
     },
+    {
+      id: 4,
+      name: 'Reinvention With Agentic AI ',
+      shortDescription: 
+        'I achieved this certification to showcase my advanced knowledge of Stripe’s payment solutions. It proves my proficiency in working with APIs, secure transactions, and creating optimized payment workflows.',
+      certificationBadge: '/images/stripe_dev_prof_badge.png',
+      credentialsLink:  
+        'https://stripecertifications.credential.net/6beca4c1-bfcb-41a4-af6f-c5aa7e09959b#acc.QZ2UxdrH',
+    },
   ];
 
   return (
