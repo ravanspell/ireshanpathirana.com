@@ -12,21 +12,19 @@ const NavBar = () => {
             left-0 
             backdrop-blur
             lg:backdrop-blur-none
-            bg-nav-bar-background
+            bg-popover/75
             lg:bg-transparent
-            rounded-t-[12px]
             lg:rounded-none
             border
             lg:border-none
-            border-custom-jet 
+            border-border 
             w-full 
             flex 
             flex-wrap
-            justify-center 
             align-middle 
             z-50"
     >
-      <ul className="flex lg:flex-col items-center gap-8 lg:gap-3">
+      <ul className="flex lg:flex-col gap-8 lg:gap-3">
         <MainMenuItems
           menuItems={[
             {

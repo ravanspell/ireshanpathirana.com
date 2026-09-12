@@ -49,7 +49,7 @@ export default async function PostPage({ params }: PageProps) {
   const post = result.data;
 
   return (
-    <article className="mx-auto mt-10 max-w-2xl px-4">
+    <article >
       <h1 className="text-3xl font-bold">{post.title}</h1>
 
       {post.publishedAt && (

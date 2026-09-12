@@ -20,20 +20,25 @@ const Card = (props: CardProps) => {
     <div
       id={id}
       className={`${className}
-                bg-border-gradient-onyx
-                p-4
-                rounded-[14px]
-                shadow-shadow-2
+                group/panel
+                relative
+                p-px
+                rounded-lg
+                md:rounded-xl
+                bg-card
+                bg-linear-to-b
+                from-border
+                to-card
                 cursor-pointer
-                z-10
-                before:content-['']
-                before:absolute
-                before:inset-px
-                before:bg-gradient-jet
-                before:rounded-[14px]
-                before:z-[-1]`}
+                transition-all
+                duration-200
+                hover:shadow-md
+                hover:bg-none
+                hover:bg-border-stronger!`}
     >
-      {children}
+      <div className="relative z-10 h-full w-full overflow-hidden rounded-[7px] bg-card p-4 sm:py-6 md:rounded-[11px]">
+        {children}
+      </div>
     </div>
   );
 };

@@ -1,15 +1,20 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Inter, Manrope, Source_Code_Pro } from 'next/font/google';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import '../styles/style.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const inter = Inter({
+  variable: '--font-inter',
   subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const manrope = Manrope({
+  variable: '--font-manrope',
+  subsets: ['latin'],
+});
+
+const sourceCodePro = Source_Code_Pro({
+  variable: '--font-source-code-pro',
   subsets: ['latin'],
 });
 
@@ -39,7 +44,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${manrope.variable} ${sourceCodePro.variable} antialiased`}
+      >
         <div className="container max-w-7xl">{children}</div>
       </body>
     </html>

@@ -50,7 +50,7 @@ const ExperienceCard = (props: ExperienceCardProps) => {
           <h4 className="h4 timeline-item-title">{designation}</h4>
           <Typography
             id="experience-description-3"
-            className="text-light-gray text-md"
+            className="text-muted-foreground text-md"
             as="p"
             text={shortDescription}
           />

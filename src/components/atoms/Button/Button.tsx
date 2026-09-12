@@ -32,19 +32,18 @@ const Button = (props: SectionProps) => {
            outline-0 
            focus-visible:outline-4 
            focus-visible:outline-offset-1 
-           border 
-           text-foreground 
-           bg-alternative 
-           dark:bg-muted 
-           hover:bg-selection
-            border-strong 
-            hover:border-stronger 
-            focus-visible:outline-brand-600 
-            text-xs 
-            px-2.5 
-            py-1 
-      
-            hover:text-orange-yellow-crayola
+           border
+           text-foreground
+           bg-secondary
+           hover:bg-accent
+            border-border
+            hover:border-border-stronger
+            focus-visible:outline-ring
+            text-xs
+            px-2.5
+            py-1
+
+            hover:text-primary
             transition-colors
             duration-300
             cursor-pointer

@@ -11,14 +11,14 @@ const MenuItem = (props: MenuItemProps) => {
       <a
         href={href}
         className="
-                text-white 
-                text-base 
+                text-foreground
+                text-lg
                 font-medium 
                 transition-colors 
                 transform 
-                hover:text-orange-yellow-crayola 
+                hover:text-primary 
                 hover:scale-110 
-                active:text-orange-yellow-crayola 
+                active:text-primary 
                 mb-6"
       >
         {label}

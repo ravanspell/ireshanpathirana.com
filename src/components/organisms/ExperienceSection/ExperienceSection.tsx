@@ -11,8 +11,12 @@ type ExperienceSectionProps = {
 
 const ExperienceSection = ({ mainContentRef }: ExperienceSectionProps) => {
   return (
-    <Section headerText="Experience" mainContentRef={mainContentRef} id="experience">
-      <div className="not-last:mb-5">
+    <Section
+      headerText="Experience"
+      mainContentRef={mainContentRef}
+      id="experience"
+    >
+      <div className="flex flex-col gap-5">
         <ExperienceCard
           id="accenture"
           date="2023 - Present"

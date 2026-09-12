@@ -62,24 +62,22 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             text-sm
             rounded-md
             border
-            bg-alternative
-            dark:bg-muted
+            bg-field
             text-foreground
-            border-strong
+            border-input
             outline-none
             transition-all
-            focus:border-stronger
+            focus:border-border-stronger
             focus:ring-2
-            focus:ring-brand-600
-            focus:ring-opacity-50
-            ${error ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}
+            focus:ring-ring
+            ${error ? 'border-destructive focus:border-destructive focus:ring-destructive/50' : ''}
             ${className}
           `}
           {...props}
         />
 
         {/* Error Message - Only rendered if error prop is provided */}
-        {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
+        {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
       </div>
     );
   },

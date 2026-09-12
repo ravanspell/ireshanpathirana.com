@@ -63,17 +63,17 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto p-8 bg-alternative dark:bg-muted rounded-lg border border-strong shadow-lg">
+    <div className="w-full max-w-md mx-auto p-8 bg-card rounded-lg border border-border shadow-lg">
       {/* Header Section */}
       <div className="mb-8 text-center">
         <h1 className="text-2xl font-bold text-foreground mb-2">Welcome Back</h1>
-        <p className="text-sm text-foreground opacity-70">Sign in to your account</p>
+        <p className="text-sm text-muted-foreground">Sign in to your account</p>
       </div>
 
       <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-6">
         {serverError && (
-          <div className="p-3 rounded-md bg-red-500 bg-opacity-10 border border-red-500">
-            <p className="text-sm text-red-500">{serverError}</p>
+          <div className="p-3 rounded-md bg-destructive/10 border border-destructive/30">
+            <p className="text-sm text-destructive">{serverError}</p>
           </div>
         )}
 
@@ -113,12 +113,12 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
             outline-none
             transition-all
             border
-            text-white
-            bg-orange-yellow-crayola
-            hover:bg-opacity-90
-            border-orange-yellow-crayola
+            text-primary-foreground
+            bg-primary
+            hover:bg-primary/90
+            border-primary
             focus-visible:ring-2
-            focus-visible:ring-orange-yellow-crayola
+            focus-visible:ring-ring
             px-4
             py-2.5
             disabled:opacity-50

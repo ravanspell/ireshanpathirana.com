@@ -11,11 +11,11 @@ const Tag = (props: TagProps) => {
   return (
     <div
       id={tagId}
-      className="bg-onyx w-max px-3 py-1 flex items-center rounded-full"
+      className="bg-secondary border border-border w-max px-3 py-1 flex items-center rounded-full"
       data-testid={tagId}
     >
       <Typography
-        className="text-xs text-vegas-gold font-bold"
+        className="text-xs text-primary font-bold"
         id={`${tagId}-tag-label`}
         text={label}
         variant="label"

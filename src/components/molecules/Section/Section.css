@@ -6,7 +6,11 @@
     left: 0;
     width: 30px;
     height: 3px;
-    background: var(--text-gradient-yellow);
+    background: linear-gradient(
+      to right,
+      var(--primary),
+      oklch(from var(--primary) calc(l - 0.08) c calc(h - 10))
+    );
     border-radius: 3px;
   }
 }

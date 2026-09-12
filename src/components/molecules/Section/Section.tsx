@@ -33,7 +33,7 @@ const Section = (props: SectionProps) => {
   return (
     <section
       ref={(el) => handleSetupSectionRef(el, id)}
-      className={`section mb-20 px-4 pr-4 color-gradient-onyx first:pt-4 md:px-8 md:pr-8 md:first:pt-8 scroll-mt-10 ${className}`.trim()}
+      className={`section mb-28  color-gradient-onyx scroll-mt-24 ${className}`.trim()}
       aria-label={id}
       id={id}
     >
@@ -41,7 +41,7 @@ const Section = (props: SectionProps) => {
         <Typography
           id={`${id}-section-header-text`}
           variant="h2"
-          className="section-header-text uppercase text-lg font-bold"
+          className="section-header-text text-2xl font-bold"
           text={headerText}
         />
       </header>

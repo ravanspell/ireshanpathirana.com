@@ -7,7 +7,6 @@ import { RefObject } from 'react';
 import AboutMeSection from '@organisms/AboutMeSection/AboutMeSection';
 import ExperienceSection from '@organisms/ExperienceSection/ExperienceSection';
 import CertificationsSection from '@organisms/Certifications/CertificationsSection';
-import { Card } from '@/components/ui/card';
 
 type MainContentProps = {
   mainContentRef: RefObject<Record<string, HTMLElement>>;
@@ -15,12 +14,10 @@ type MainContentProps = {
 
 const MainContent = ({ mainContentRef }: MainContentProps) => {
   return (
-    <main >
-      <Card>
-        <AboutMeSection mainContentRef={mainContentRef} />
-        <ExperienceSection mainContentRef={mainContentRef} />
-        <CertificationsSection mainContentRef={mainContentRef} />
-      </Card>
+    <main>
+      <AboutMeSection mainContentRef={mainContentRef} />
+      <ExperienceSection mainContentRef={mainContentRef} />
+      <CertificationsSection mainContentRef={mainContentRef} />
     </main>
   );
 };

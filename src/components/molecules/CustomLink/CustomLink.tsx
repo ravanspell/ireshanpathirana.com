@@ -14,7 +14,7 @@ interface LinkProps {
 const CustomLink = ({ href, name, children, useGroup = true, external = false }: LinkProps) => {
   const baseClasses = [
     'text-lg transition-colors duration-300',
-    useGroup ? 'group-hover:text-orange-yellow-crayola' : '',
+    useGroup ? 'group-hover:text-primary' : '',
   ]
     .filter(Boolean)
     .join(' ');
