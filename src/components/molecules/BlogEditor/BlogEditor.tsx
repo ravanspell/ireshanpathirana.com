@@ -14,6 +14,7 @@ import { Button } from "@/components/atoms/button";
 import TagInput from "@molecules/TagInput/TagInput";
 import { loadEditorTools } from "@lib/editor-tools";
 import { slugify } from "@lib/slug";
+import { uploadMedia } from "@lib/media-upload";
 
 interface EditorJSInstance {
     destroy: () => void;
@@ -60,6 +61,23 @@ export default function EditorClient({
     // renaming a published post doesn't silently change its URL.
     const [slugTouched, setSlugTouched] = useState(Boolean(initialSlug));
 
+    // The Editor.js upload tools only show a generic "upload failed" toast, so
+    // the reason (wrong type, too large, signed out) is surfaced here instead.
+    const [uploadError, setUploadError] = useState<string | null>(null);
+
+    const reportUploadErrors = useCallback(
+        async <T,>(upload: Promise<T>): Promise<T> => {
+            setUploadError(null);
+            try {
+                return await upload;
+            } catch (error) {
+                setUploadError(error instanceof Error ? error.message : "Upload failed");
+                throw error;
+            }
+        },
+        [],
+    );
+
     const onTitleChange = (value: string) => {
         setTitle(value);
         if (!slugTouched) setSlug(slugify(value));
@@ -84,24 +102,17 @@ export default function EditorClient({
             // a block type the public post page can render.
             tools: await loadEditorTools({
                 imageUploader: {
-                    uploadByFile(file: Blob) {
-                        console.log("file ---->", file);
-                        return new Promise((resolve) => {
-                            setTimeout(() => {
-                                resolve({
-                                    success: 1,
-                                    file: { url: "https://placekitten.com/400/300" },
-                                });
-                            }, 800);
-                        });
+                    async uploadByFile(file: Blob) {
+                        const { url } = await reportUploadErrors(uploadMedia(file));
+                        return { success: 1, file: { url } };
                     },
-                },
+                }
             }),
             onReady: () => {
                 editorRef.current = editor;
             },
         });
-    }, [initialData]);
+    }, [initialData, reportUploadErrors]);
 
     useEffect(() => {
         if (!isMounted) return;
@@ -219,6 +230,12 @@ export default function EditorClient({
                 id="editorjs"
                 className="bg-field text-foreground min-h-64 rounded-md border border-input py-6 pr-4 pl-4 min-[651px]:pr-6 min-[651px]:pl-18"
             />
+
+            {uploadError && (
+                <p className="text-destructive text-sm" role="alert">
+                    ❌ Upload failed: {uploadError}
+                </p>
+            )}
 
             <div className="flex flex-wrap items-center gap-2">
                 <Button disabled={isPending} onClick={() => save(true)}>

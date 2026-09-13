@@ -1,14 +1,17 @@
 import type { EditorConfig, ToolConstructable } from '@editorjs/editorjs';
 
-/** `ImageConfig` isn't re-exported from the package root, so restate what we pass. */
-type ImageUploader = {
-  uploadByFile?: (file: Blob) => Promise<{ success: number; file: { url: string } }>;
-  uploadByUrl?: (url: string) => Promise<{ success: number; file: { url: string } }>;
+import { IMAGE_CONTENT_TYPES } from '@lib/constants/media';
+
+type UploadResponse = { success: number; file: { url: string } & Record<string, unknown> };
+
+type Uploader = {
+  uploadByFile?: (file: Blob) => Promise<UploadResponse>;
+  uploadByUrl?: (url: string) => Promise<UploadResponse>;
 };
 
 type EditorToolOptions = {
   /** Editor-only — the viewer just renders the URL already in the block. */
-  imageUploader?: ImageUploader;
+  imageUploader?: Uploader;
 };
 
 /**
@@ -50,7 +53,11 @@ export async function loadEditorTools({
     code: CodeTool as unknown as ToolConstructable,
     image: {
       class: ImageTool as unknown as ToolConstructable,
-      config: imageUploader ? { uploader: imageUploader } : {},
-    },
+      config: {
+        // Limits the file picker; `MediaService` is what actually enforces it.
+        types: IMAGE_CONTENT_TYPES.join(','),
+        ...(imageUploader ? { uploader: imageUploader } : {}),
+      },
+    }
   };
 }

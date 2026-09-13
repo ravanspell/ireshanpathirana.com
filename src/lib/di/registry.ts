@@ -18,10 +18,12 @@ import { TagRepository } from '@repositories/tag.repository';
 import { UserRepository } from '@repositories/user.repository';
 
 import { AuthService } from '@services/auth.service';
+import { MediaService } from '@services/media.service';
 import { PostService } from '@services/post.service';
 import { TagService } from '@services/tag.service';
 
 import { AuthController } from '@controllers/auth.controller';
+import { MediaController } from '@controllers/media.controller';
 import { PostController } from '@controllers/post.controller';
 import { TagController } from '@controllers/tag.controller';
 
@@ -56,10 +58,12 @@ const PROVIDERS: Constructor<unknown>[] = [
   UserRepository,
   // Services
   AuthService,
+  MediaService,
   PostService,
   TagService,
   // Controllers
   AuthController,
+  MediaController,
   PostController,
   TagController,
 ];
