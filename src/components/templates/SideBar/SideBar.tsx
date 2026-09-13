@@ -26,19 +26,7 @@ const SideBar = () => {
             />
           </div>
           <NavBar />
-          {/* resume download dropdown */}
-          <div className="dropdown-select-wrapper">
-            <Button
-              buttonAttributes={{
-                name: 'download resume',
-              }}
-              icon={faDownload}
-              label="Download Resume"
-              onClick={() => { }}
-            />
-          </div>
         </div>
-
       </div>
       {/* social media links */}
       <div className="flex">
