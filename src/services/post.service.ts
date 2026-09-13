@@ -3,6 +3,7 @@ import { BaseService } from './base.service';
 import { AuthService } from './auth.service';
 import { PostRepository } from '@repositories/post.repository';
 import { TagRepository } from '@repositories/tag.repository';
+import { UserRepository } from '@repositories/user.repository';
 import { CreatePostDto, UpdatePostDto, UpsertPostDto } from '@dtos/post.dto';
 import { deriveExcerpt } from '@lib/editor-content';
 
@@ -14,13 +15,9 @@ import { deriveExcerpt } from '@lib/editor-content';
 export class PostService extends BaseService {
   constructor(
     @inject(PostRepository) private postRepository: PostRepository,
-    // A post and its tags are saved as one unit, so this service owns both
-    // writes. Going through `TagService` instead would only re-run the
-    // authorisation `requireAuthorId()` has already done — an extra Supabase
-    // round trip per save — for rules that don't apply to tags created as a
-    // side effect of saving a post.
     @inject(TagRepository) private tagRepository: TagRepository,
     @inject(AuthService) private authService: AuthService,
+    @inject(UserRepository) private userRepository: UserRepository,
   ) {
     super();
   }
@@ -84,7 +81,9 @@ export class PostService extends BaseService {
       this.notFound('Post');
     }
 
-    return post;
+    // A second query rather than a join: `auth.users` isn't in the Prisma
+    // schema, so the post query can't include it.
+    return { ...post, author: await this.userRepository.findById(post.authorId) };
   }
 
   // ---------- Authenticated reads (drafts included) ----------

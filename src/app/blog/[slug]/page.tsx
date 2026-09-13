@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 import { resolve } from '@/lib/di/container';
 import { PostController } from '@controllers/post.controller';
 import CMSViewer from '@molecules/CMSViewer/CMSViewer';
+import Tag from '@/components/atoms/Tag/Tag';
+import ProfileImage from '@/components/molecules/ProfileImage/ProfileImage';
 
 /**
  * Rendered on demand and then cached, rather than prerendered at build time —
@@ -18,7 +20,7 @@ type PageProps = { params: Promise<{ slug: string }> };
  * `generateMetadata` and the page both need the same post, and Next calls them
  * as two separate functions with no way to pass data between them. Next dedupes
  * `fetch()` within a render but not Prisma, so without this the route costs two
- * identical queries. `cache()` memoises for one render pass only — it is not a
+ * identical queries. `cache()` memoises for one render pass only - it is not a
  * cross-request cache, so a revalidation still sees fresh data.
  */
 const getPost = cache((slug: string) =>
@@ -49,32 +51,44 @@ export default async function PostPage({ params }: PageProps) {
   const post = result.data;
 
   return (
-    <article >
-      <h1 className="text-3xl font-bold">{post.title}</h1>
-
-      {post.publishedAt && (
-        <time
-          dateTime={post.publishedAt.toISOString()}
-          className="text-muted-foreground mt-2 block text-sm"
-        >
-          {new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(post.publishedAt)}
-        </time>
-      )}
+    <article className="mx-auto max-w-[680] px-4 py-12">
+      <h1 className="text-5xl font-bold mb-8 mt-6">{post.title}</h1>
+      <div className='flex gap-3 items-center mb-6' >
+        <div>
+          <ProfileImage
+            id="blog-writer"
+            src={post.author?.avatarUrl ?? '/images/dp.jpeg'}
+          />
+        </div>
+        <div>
+          {post.author?.name && (
+            <p className="text-sm font-semibold">{post.author.name}</p>
+          )}
+        </div>
+        <div>
+          {post.publishedAt && (
+            <time
+              dateTime={post.publishedAt.toISOString()}
+              className="text-muted-foreground block text-sm"
+            >
+              {new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(post.publishedAt)}
+            </time>
+          )}
+        </div>
+      </div>
 
       {post.tags.length > 0 && (
-        <ul className="mt-4 flex flex-wrap gap-2">
+        <div className='flex flex-wrap gap-1.5'>
           {post.tags.map((tag) => (
-            <li
+            <Tag
               key={tag.id}
-              className="bg-muted text-muted-foreground rounded-full px-2 py-0.5 text-xs"
-            >
-              {tag.name}
-            </li>
+              label={tag.name}
+            />
           ))}
-        </ul>
+        </div>
       )}
 
-      <div className="mt-8">
+      <div className="mt-10">
         {post.content ? (
           <CMSViewer data={post.content} />
         ) : (

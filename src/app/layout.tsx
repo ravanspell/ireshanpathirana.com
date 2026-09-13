@@ -47,7 +47,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${manrope.variable} ${sourceCodePro.variable} antialiased`}
       >
-        <div className="container max-w-7xl">{children}</div>
+        {children}
       </body>
     </html>
   );

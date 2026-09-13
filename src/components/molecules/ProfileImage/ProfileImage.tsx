@@ -13,7 +13,7 @@ const ProfileImage = (props: ProfileImageProps) => {
   return (
     <div
       id={id}
-      className="relative bg-secondary border border-border p-3 rounded-full h-20 w-20 mx-auto"
+      className="relative bg-secondary border border-border p-3 rounded-full h-9 w-9"
     >
       <Image
         fill

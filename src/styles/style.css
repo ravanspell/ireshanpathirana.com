@@ -128,11 +128,9 @@ html {
    Editor.js Overrides
    ============================================ */
 
-/* 1. Full-width: remove the default 650px max-width cap */
-
-.ce-block__content,
-.ce-toolbar__content {
-  max-width: 93% !important;
+.ce-block__content.ce-block__content,
+.ce-toolbar__content.ce-toolbar__content {
+  max-width: none;
 }
 
 /* 2. Heading sizes: Tailwind Preflight resets all h1-h6 to inherit */
@@ -187,11 +185,144 @@ textarea.ce-code__textarea {
   font-size: var(--fs-7);
 }
 
+/* 4. Editor chrome on the dark theme. Editor.js and its tools ship a light
+   palette - white popovers, black text, #1d202b toolbar icons, a pale-blue
+   block selection - and inject it into <head> after this file. Its colours
+   are mostly custom properties declared on the component's own class, so
+   each override doubles that class to win on specificity, not order. */
+.codex-editor.codex-editor {
+  --selectionColor: oklch(from var(--primary) l c h / 12%);
+  --inlineSelectionColor: oklch(from var(--primary) l c h / 25%);
+  --bg-light: var(--accent);
+  --grayText: var(--muted-foreground);
+  --color-dark: var(--foreground);
+  --color-active-icon: var(--primary);
+  --color-gray-border: var(--border);
+  --color-line-gray: var(--border);
+}
+
+.ce-popover.ce-popover,
+.ce-inline-toolbar.ce-inline-toolbar {
+  --color-border: var(--border-stronger);
+  --color-shadow: oklch(0 0 0 / 40%);
+  --color-background: var(--popover);
+  --color-text-primary: var(--popover-foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-border-icon: var(--border);
+  --color-border-icon-disabled: var(--border);
+  --color-text-icon-active: var(--primary);
+  --color-background-icon-active: oklch(from var(--primary) l c h / 12%);
+  --color-background-item-focus: var(--accent);
+  --color-shadow-item-focus: transparent;
+  --color-background-item-hover: var(--accent);
+}
+
+.ce-toolbar__plus.ce-toolbar__plus,
+.ce-toolbar__settings-btn.ce-toolbar__settings-btn {
+  color: var(--muted-foreground);
+}
+
+/* The toolbox's "Filter" field is its own component with a hardcoded
+   #F8F8F8 fill, outside the popover's custom properties. */
+.cdx-search-field.cdx-search-field {
+  background: var(--field);
+  border-color: var(--input);
+}
+
+.cdx-search-field__icon.cdx-search-field__icon svg,
+.ce-popover__nothing-found-message.ce-popover__nothing-found-message {
+  color: var(--muted-foreground);
+}
+
+.cdx-search-field__input.cdx-search-field__input {
+  color: var(--foreground);
+}
+
+.cdx-search-field__input.cdx-search-field__input::placeholder,
+.ce-inline-tool-input.ce-inline-tool-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+@media (hover: hover) {
+  .ce-toolbar__plus.ce-toolbar__plus:hover,
+  .ce-toolbar__settings-btn.ce-toolbar__settings-btn:hover,
+  .cdx-settings-button.cdx-settings-button:hover,
+  .ce-inline-toolbar__dropdown.ce-inline-toolbar__dropdown:hover {
+    background-color: var(--accent);
+    color: var(--foreground);
+  }
+}
+
+.ce-toolbar__plus--active.ce-toolbar__plus--active,
+.ce-toolbar__settings-btn--active.ce-toolbar__settings-btn--active {
+  background-color: var(--accent);
+}
+
+/* Below 650px the toolbar buttons become floating white chips. */
+@media (max-width: 650px) {
+  .ce-toolbar__plus.ce-toolbar__plus,
+  .ce-toolbar__settings-btn.ce-toolbar__settings-btn {
+    background-color: var(--popover);
+    border-color: var(--border-stronger);
+  }
+}
+
+.ce-block--selected.ce-block--selected .ce-block__content {
+  background: var(--selectionColor);
+}
+
+.codex-editor ::selection {
+  background: var(--inlineSelectionColor);
+}
+
+.ce-stub.ce-stub {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--muted-foreground);
+}
+
+.cdx-input.cdx-input,
+.cdx-button.cdx-button {
+  background: var(--field);
+  border-color: var(--input);
+  box-shadow: none;
+  color: var(--foreground);
+}
+
+.cdx-button.cdx-button {
+  color: var(--muted-foreground);
+}
+
+.image-tool.image-tool {
+  --bg-color: var(--muted);
+  --front-color: var(--primary);
+  --border-color: var(--border);
+}
+
+.image-tool--uploading.image-tool--uploading .image-tool__image {
+  background-color: var(--field);
+}
+
+.cdx-list-start-with-field.cdx-list-start-with-field {
+  background: var(--field);
+  border-color: var(--input);
+}
+
 /* Viewer only: `CMSViewer` sizes each block to its scrollHeight, so drop the
-   tool's fixed 200px and its scrollbar. The editor keeps both — there the
+   tool's fixed 200px and its scrollbar. The editor keeps both - there the
    author resizes by hand, which is the only sizing the tool implements. */
 .cms-viewer .ce-code__textarea {
   min-height: 0;
   resize: none;
   overflow-y: hidden;
+}
+
+/* Read-only viewer sits flush with the page's own headings. The redactor's
+   inline `padding-bottom` (Editor.js's `minHeight`, 300px) is click-to-append
+   space that means nothing to a reader. */
+.cms-viewer .codex-editor__redactor {
+  padding-bottom: 0 !important;
+  /* Below ~650px Editor.js adds `.codex-editor--narrow`, which reserves a
+     50px right margin for the toolbar - the blog's reading column trips it. */
+  margin-right: 0 !important;
 }

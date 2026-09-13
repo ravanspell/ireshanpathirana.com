@@ -23,6 +23,10 @@ interface EditorJSInstance {
     // Add other methods as needed (e.g., clear, focus)
 }
 
+// Shared by the title and slug inputs, and matched by `TagInput`'s wrapper.
+const fieldClass =
+    "w-full rounded-md border border-input bg-field px-3 py-2 text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:opacity-50";
+
 interface EditorClientProps {
     /** Present when editing an existing post; absent when drafting a new one. */
     articleId?: string;
@@ -74,6 +78,9 @@ export default function EditorClient({
             holder: "editorjs",
             autofocus: true,
             placeholder: "Start writing your story...",
+            // Editor.js's default is 300px of click-to-append space below the
+            // last block, which reads as a broken empty panel.
+            minHeight: 80,
             data: initialData,
             // Shared with `CMSViewer` so a block type that saves here is always
             // a block type the public post page can render.
@@ -165,7 +172,7 @@ export default function EditorClient({
     };
 
     return (
-        <div className="w-full space-y-4">
+        <div className="w-full space-y-5">
             <div className="space-y-2">
                 <label className="block text-sm font-medium" htmlFor="post-title">
                     Title
@@ -175,7 +182,7 @@ export default function EditorClient({
                     value={title}
                     onChange={(e) => onTitleChange(e.target.value)}
                     placeholder="Post title"
-                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-lg"
+                    className={`${fieldClass} text-lg font-medium`}
                 />
             </div>
 
@@ -184,7 +191,7 @@ export default function EditorClient({
                     Slug
                 </label>
                 <div className="flex items-center gap-2">
-                    <span className="text-muted-foreground text-sm">/blog/</span>
+                    <span className="text-muted-foreground shrink-0 font-mono text-sm">/blog/</span>
                     <input
                         id="post-slug"
                         value={slug}
@@ -193,7 +200,7 @@ export default function EditorClient({
                             setSlug(slugify(e.target.value));
                         }}
                         placeholder="post-slug"
-                        className="flex-1 rounded-md border border-input bg-background px-3 py-2 font-mono text-sm"
+                        className={`${fieldClass} min-w-0 flex-1 font-mono text-sm`}
                     />
                 </div>
             </div>
@@ -213,10 +220,10 @@ export default function EditorClient({
 
             <div
                 id="editorjs"
-                className="bg-card text-card-foreground rounded-md border border-input p-2"
+                className="bg-field text-foreground min-h-64 rounded-md border border-input py-6 pr-4 pl-4 min-[651px]:pr-6 min-[651px]:pl-18"
             />
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
                 <Button disabled={isPending} onClick={() => save(true)}>
                     {isPending ? "Saving..." : initialPublished ? "Update" : "Publish"}
                 </Button>
@@ -225,9 +232,9 @@ export default function EditorClient({
                 </Button>
             </div>
 
-            {status === "done" && <p className="text-green-600">✅ Saved successfully!</p>}
+            {status === "done" && <p className="text-sm text-green-500">✅ Saved successfully!</p>}
             {status === "error" && (
-                <p className="text-destructive">❌ Save failed{saveError ? `: ${saveError}` : "."}</p>
+                <p className="text-destructive text-sm">❌ Save failed{saveError ? `: ${saveError}` : "."}</p>
             )}
         </div>
     );

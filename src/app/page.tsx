@@ -34,10 +34,12 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-5 pb-20 md:pb-0">
-      <SideBar />
-      <div className="pt-24 lg:w-[60%] lg:py-24">
-        <MainContent mainContentRef={mainContentRef} />
+    <div className="container max-w-7xl">
+      <div className="flex flex-col lg:flex-row gap-5 pb-20 md:pb-0">
+        <SideBar />
+        <div className="pt-24 lg:w-[60%] lg:py-24">
+          <MainContent mainContentRef={mainContentRef} />
+        </div>
       </div>
     </div>
   );

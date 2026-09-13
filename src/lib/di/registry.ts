@@ -15,6 +15,7 @@ import { Db, db } from '@lib/db';
 
 import { PostRepository } from '@repositories/post.repository';
 import { TagRepository } from '@repositories/tag.repository';
+import { UserRepository } from '@repositories/user.repository';
 
 import { AuthService } from '@services/auth.service';
 import { PostService } from '@services/post.service';
@@ -52,6 +53,7 @@ const PROVIDERS: Constructor<unknown>[] = [
   // Repositories
   PostRepository,
   TagRepository,
+  UserRepository,
   // Services
   AuthService,
   PostService,

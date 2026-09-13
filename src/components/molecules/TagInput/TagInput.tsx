@@ -90,7 +90,7 @@ export default function TagInput({
 
   return (
     <div className="space-y-2">
-      <div className="border-input bg-background flex flex-wrap items-center gap-2 rounded-md border px-3 py-2">
+      <div className="border-input bg-field focus-within:border-ring focus-within:ring-ring/40 flex flex-wrap items-center gap-2 rounded-md border px-3 py-2 transition-colors focus-within:ring-2">
         {value.map((tag, index) => (
           <span
             key={slugify(tag)}
@@ -120,7 +120,7 @@ export default function TagInput({
           // that was never followed by Enter isn't silently dropped.
           onBlur={() => commit(draft)}
           placeholder={atLimit ? '' : value.length === 0 ? 'Add a tag…' : ''}
-          className="min-w-32 flex-1 bg-transparent text-sm outline-none disabled:cursor-not-allowed"
+          className="text-foreground placeholder:text-muted-foreground min-w-32 flex-1 bg-transparent text-sm outline-none disabled:cursor-not-allowed"
         />
 
         <datalist id={listId}>

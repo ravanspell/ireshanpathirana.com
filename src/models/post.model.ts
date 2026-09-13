@@ -1,6 +1,7 @@
 import type { Post as PostRow, Tag as TagRow } from '@generated/prisma/client';
 import type { EditorContent } from '@dtos/post.dto';
 import { toTag, type Tag } from './tag.model';
+import type { User } from './user.model';
 
 /**
  * Shape the repository actually selects: a post row, optionally with its join
@@ -30,6 +31,12 @@ export interface Post {
   published: boolean;
   publishedAt: Date | null;
   authorId: string;
+  /**
+   * The author's public profile, looked up from `auth.users` by `authorId`.
+   * Absent unless the service attached it (only the public post page does);
+   * null when the auth user no longer exists.
+   */
+  author?: User | null;
   createdAt: Date;
   updatedAt: Date;
   /** Flattened from the `PostTag` join rows. Empty when tags weren't included. */
