@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import { createClient } from './src/utils/supabase/middleware';
-import { ROUTES, isPublicRoute } from './src/lib/constants/routes';
-import { NEXT_PARAM, safeNextPath } from './src/lib/auth/redirect';
+import { createClient } from '@/utils/supabase/middleware';
+import { ROUTES, isPublicRoute } from '@/lib/constants/routes';
+import { NEXT_PARAM, safeNextPath } from '@/lib/auth/redirect';
 
 /**
  * Next.js Middleware
