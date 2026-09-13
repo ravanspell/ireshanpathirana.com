@@ -1,72 +1,103 @@
 'use client';
 
-import { useNavigationView } from '@/utils/hooks/useNavigationView';
 import Link from 'next/link';
-import { Separator } from '@/components/ui/separator';
-import { cn } from '@/lib/utils';
-import { FileEdit, LayoutDashboard } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import AdminNavUser, { type AdminUser } from '@molecules/AdminNavUser/AdminNavUser';
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarRail,
+  useSidebar,
+} from '@/components/atoms/sidebar';
+import { ADMIN_NAV, ADMIN_SITE_LINKS, isNavItemActive } from './admin-nav';
 
-interface AdminSidebarProps {
-  onNavigate?: () => void;
+interface AdminSidebarProps extends React.ComponentProps<typeof Sidebar> {
+  user: AdminUser | null;
 }
 
 /**
- * Sidebar navigation component for the admin dashboard
+ * CMS sidebar, after shadcn's `sidebar-07` / `dashboard-01` blocks.
  *
- * Highlights the active navigation link based on the current URL.
+ * Collapses to an icon rail on desktop (⌘B or the header trigger) and becomes
+ * an off-canvas sheet on mobile — both handled by the `Sidebar` primitive.
  */
-export default function AdminSidebar({ onNavigate }: AdminSidebarProps) {
-  // Define your nav items
-  const navItems = [
-    { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
-    { label: 'Blog Editor', href: '/admin/editor', icon: FileEdit },
-  ];
+export default function AdminSidebar({ user, ...props }: AdminSidebarProps) {
+  const pathname = usePathname();
+  const { isMobile, setOpenMobile } = useSidebar();
 
-  const { isActive } = useNavigationView(navItems);
+  // The mobile sheet stays open across client navigations unless told otherwise.
+  const closeOnMobile = () => {
+    if (isMobile) setOpenMobile(false);
+  };
 
   return (
-    <aside className="w-64 min-h-screen bg-card border-r flex flex-col">
-      <div className="p-6">
-        <div className="mb-2">
-          <h2 className="font-bold text-xl text-foreground">Admin Panel</h2>
+    <Sidebar collapsible="icon" {...props}>
+      <SidebarHeader>
+        <div className='flex flex-col gap-2 p-2'>
+          <div className='flex gap-2 justify-center items-center'>
+            <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg font-heading text-sm font-bold">
+              AC
+            </div>
+            <div className="grid flex-1 text-left text-sm leading-tight">
+              <span className="truncate font-semibold">Admin Center</span>
+            </div>
+          </div>
         </div>
-        <p className="text-sm text-muted-foreground mt-1">Manage your content</p>
-      </div>
+      </SidebarHeader>
 
-      <Separator />
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {ADMIN_NAV.map((item) => (
+                <SidebarMenuItem key={item.href}>
+                  <SidebarMenuButton
+                    asChild
+                    tooltip={item.title}
+                    isActive={isNavItemActive(item, pathname)}
+                  >
+                    <Link href={item.href} onClick={closeOnMobile}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
 
-      <nav className="flex-1 p-4 space-y-1">
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          const active = isActive(item.href);
+        <SidebarGroup className="mt-auto">
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {ADMIN_SITE_LINKS.map((item) => (
+                <SidebarMenuItem key={item.href}>
+                  <SidebarMenuButton asChild size="sm" tooltip={item.title}>
+                    <a href={item.href} target="_blank" rel="noopener noreferrer">
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
 
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={onNavigate}
-              className={cn(
-                'flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 text-sm font-medium',
-                active
-                  ? 'bg-primary text-primary-foreground shadow-sm'
-                  : 'text-foreground hover:bg-accent hover:text-accent-foreground'
-              )}
-            >
-              <Icon className={cn('h-5 w-5', active ? 'text-primary-foreground' : 'text-muted-foreground')} />
-              {item.label}
-            </Link>
-          );
-        })}
-      </nav>
-
-      <Separator />
-
-      <div className="p-4">
-        <div className="rounded-lg bg-muted p-4">
-          <p className="text-xs font-medium text-foreground mb-1">Need help?</p>
-          <p className="text-xs text-muted-foreground">Check our documentation</p>
-        </div>
-      </div>
-    </aside>
+      {user && (
+        <SidebarFooter>
+          <AdminNavUser user={user} />
+        </SidebarFooter>
+      )}
+      <SidebarRail />
+    </Sidebar>
   );
 }

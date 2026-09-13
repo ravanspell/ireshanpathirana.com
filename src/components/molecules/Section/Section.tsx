@@ -33,7 +33,7 @@ const Section = (props: SectionProps) => {
   return (
     <section
       ref={(el) => handleSetupSectionRef(el, id)}
-      className={`section mb-28  color-gradient-onyx scroll-mt-24 ${className}`.trim()}
+      className={`section mb-28 scroll-mt-24 ${className}`.trim()}
       aria-label={id}
       id={id}
     >

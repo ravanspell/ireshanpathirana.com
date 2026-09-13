@@ -1,79 +1,37 @@
+/* Raw tuning values for the token engine in _theme.css — the only numbers you
+   tune. Everything in _theme.css is derived from these, so retheming the whole
+   site is a matter of changing --hue. */
 :root {
-  /* gradient */
+  /* ── Seeds ────────────────────────────────────────────────────── */
+  --hue: 91; /* brand: our gold. Supabase ships 159 (green) */
+  /* Greys keep Supabase's own hue. Tying this to --hue tints every surface and
+     text grey gold (a warm brown cast); the swap is for the accent only. */
+  --surface-hue: 159;
+  --primary-hue: var(--hue);
+  --chroma: 0.005; /* how much hue bleeds into the greys */
+  --surface: 0.19; /* background lightness */
+  --foreground-lightness: 0.95;
+  --contrast: 0.5;
+  --elevation-step: 0.025;
+  --muted-foreground-level: 0.8;
+  --tertiary-foreground-level: 0.65;
+  --field-alpha: 0.12;
 
-  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(240, 1%, 25%) 3%, hsl(0, 0%, 19%) 97%);
-  --bg-gradient-jet:
-    linear-gradient(to bottom right, hsla(240, 1%, 18%, 0.251) 0%, hsla(240, 2%, 11%, 0) 100%),
-    hsl(240, 2%, 13%);
-  --bg-gradient-yellow-1: linear-gradient(
-    to bottom right,
-    hsl(45, 100%, 71%) 0%,
-    hsla(36, 100%, 69%, 0) 50%
-  );
-  --bg-gradient-yellow-2:
-    linear-gradient(135deg, hsla(45, 100%, 71%, 0.251) 0%, hsla(35, 100%, 68%, 0) 59.86%),
-    hsl(240, 2%, 13%);
-  --border-gradient-onyx: linear-gradient(
-    to bottom right,
-    hsl(0, 0%, 25%) 0%,
-    hsla(0, 0%, 25%, 0) 50%
-  );
-  --text-gradient-yellow: linear-gradient(to right, hsl(45, 100%, 72%), hsl(35, 100%, 68%));
+  /* ── Contrast floors ──────────────────────────────────────────── */
+  --contrast-text-floor: 0.9;
+  --contrast-border-floor: 0.05;
 
-  /* solid */
+  /* ── Elevation levels (multiples of --elevation-step) ─────────── */
+  --elevation-1: 1;
+  --elevation-2: 1.5;
+  --elevation-3: 2;
+  --elevation-4: 3;
 
-  --jet: hsl(0, 0%, 22%);
-  --onyx: hsl(240, 1%, 17%);
-  --eerie-black-1: hsl(240, 2%, 13%);
-  --eerie-black-2: hsl(240, 2%, 12%);
-  --smoky-black: hsl(0, 0%, 7%);
-  --white-1: hsl(0, 0%, 100%);
-  --white-2: hsl(0, 0%, 98%);
-  --orange-yellow-crayola: hsl(45, 100%, 72%);
-  --vegas-gold: hsl(45, 54%, 58%);
-  --light-gray: hsl(0, 0%, 84%);
-  --light-gray-70: hsla(0, 0%, 84%, 0.7);
-  --bittersweet-shimmer: hsl(0, 43%, 51%);
-  --nav-bar-background: hsla(240, 1%, 17%, 0.75);
-
-  /**
-    * typography
-    */
-
-  /* font-family */
-  --ff-poppins: 'Poppins', sans-serif;
-
-  /* font-size */
-  --fs-1: 24px;
-  --fs-2: 18px;
-  --fs-3: 17px;
-  --fs-4: 16px;
-  --fs-5: 15px;
-  --fs-6: 14px;
-  --fs-7: 13px;
-  --fs-8: 11px;
-
-  /* font-weight */
-  --fw-300: 300;
-  --fw-400: 400;
-  --fw-500: 500;
-  --fw-600: 600;
-
-  /**
-   * shadow
-   */
-
-  --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
-  --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
-  --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
-  --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.15);
-  --shadow-5: 0 24px 80px hsla(0, 0%, 0%, 0.25);
-
-  /**
-   * transition
-   */
-
-  --transition-1: 0.25s ease;
-  --transition-2: 0.5s ease-in-out;
+  /* ── Status colours ───────────────────────────────────────────── */
+  --brand-hue-reference: 159;
+  --status-hue-pull: 0.15;
+  --expressive-chroma: 0.14;
+  --warning-lightness: 0.8;
+  --destructive-lightness: 0.75;
+  --info-lightness: 0.7;
 }
-

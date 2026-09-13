@@ -1,33 +1,16 @@
 /* Dark-only theme. Token engine reverse-engineered from supabase.com,
-   re-seeded with our gold (--orange-yellow-crayola) in place of their green.
+   re-seeded with our gold in place of their green.
 
-   Everything below the seeds is derived, so retheming the whole site is a
-   matter of changing --hue. Status hues rotate along with it, which keeps
-   warning/destructive/info harmonious with whatever brand hue is set. */
+   Every token here is derived from the raw values in _veriables.css. Status
+   hues rotate along with the brand hue, which keeps warning/destructive/info
+   harmonious with whatever --hue is set. */
 :root {
   color-scheme: dark;
-
-  /* ── Seeds — the only numbers you tune ─────────────────────────── */
-  --hue: 91; /* brand: our gold. Supabase ships 159 (green) */
-  /* Greys keep Supabase's own hue. Tying this to --hue tints every surface and
-     text grey gold (a warm brown cast); the swap is for the accent only. */
-  --surface-hue: 159;
-  --primary-hue: var(--hue);
-  --chroma: 0.005; /* how much hue bleeds into the greys */
-  --surface: 0.19; /* background lightness */
-  --foreground-lightness: 0.95;
-  --contrast: 0.5;
-  --elevation-step: 0.025;
-  --muted-foreground-level: 0.8;
-  --tertiary-foreground-level: 0.65;
-  --field-alpha: 0.12;
 
   /* ── Contrast curve ───────────────────────────────────────────── */
   --contrast-delta: calc((var(--contrast) - 0.5) / 0.5);
   --contrast-up: max(0, var(--contrast-delta));
   --contrast-down: max(0, calc(var(--contrast-delta) * -1));
-  --contrast-text-floor: 0.9;
-  --contrast-border-floor: 0.05;
   --contrast-text: calc(1 - (1 - var(--contrast-text-floor)) * var(--contrast-down));
   --contrast-border-linear: calc(
     var(--contrast-border-floor) + (1 - var(--contrast-border-floor)) * var(--contrast)
@@ -35,10 +18,6 @@
   --contrast-border: calc(var(--contrast-border-linear) * var(--contrast-border-linear));
 
   /* ── Elevation ────────────────────────────────────────────────── */
-  --elevation-1: 1;
-  --elevation-2: 1.5;
-  --elevation-3: 2;
-  --elevation-4: 3;
   --tone-span: calc(var(--foreground-lightness) - var(--surface));
   --surface-overlay-unit: calc(
     var(--elevation-step) / max(var(--tone-span), calc(var(--tone-span) * -1))
@@ -48,8 +27,6 @@
   --tertiary-alpha: calc(var(--surface-overlay-unit) * var(--elevation-3));
 
   /* ── Status hues rotate with the brand hue ────────────────────── */
-  --brand-hue-reference: 159;
-  --status-hue-pull: 0.15;
   --warning-hue: clamp(
     65,
     calc(75 + (var(--primary-hue) - var(--brand-hue-reference)) * var(--status-hue-pull)),
@@ -65,10 +42,6 @@
     calc(288 + (var(--primary-hue) - var(--brand-hue-reference)) * var(--status-hue-pull)),
     302
   );
-  --expressive-chroma: 0.14;
-  --warning-lightness: 0.8;
-  --destructive-lightness: 0.75;
-  --info-lightness: 0.7;
 
   /* ── Surfaces ─────────────────────────────────────────────────── */
   --background: oklch(var(--surface) calc(var(--chroma) * 0.5) var(--surface-hue));

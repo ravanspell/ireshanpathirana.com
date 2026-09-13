@@ -12,11 +12,6 @@ import { resolveNextPath } from '@/lib/auth/redirect';
  *
  * Authenticates a user with email and password.
  *
- * `next` is bound on the server by the login page (`loginAction.bind(null,
- * next)`), so it arrives back through the client. Next.js encrypts bound
- * arguments, but it is re-validated here anyway — this is the call that acts
- * on it, and it should not have to assume an earlier layer got it right.
- *
  * @param next - Path to land on after a successful login
  * @param credentials - Object containing email and password
  * @returns Object with errors if validation/authentication fails, otherwise redirects

@@ -1,28 +1,44 @@
-import AdminSidebar from '@molecules/AdminSidebar/AdminSidebar';
-import AdminMobileHeader from '@molecules/AdminMobileHeader/AdminMobileHeader';
+import { cookies } from 'next/headers';
 import NextTopLoader from 'nextjs-toploader';
+import AdminSidebar from '@molecules/AdminSidebar/AdminSidebar';
+import AdminSiteHeader from '@molecules/AdminSiteHeader/AdminSiteHeader';
+import type { AdminUser } from '@molecules/AdminNavUser/AdminNavUser';
+import { SidebarInset, SidebarProvider } from '@/components/atoms/sidebar';
+import { resolve } from '@/lib/di/container';
+import { AuthController } from '@controllers/auth.controller';
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+/** Only the fields the sidebar shows — the full Supabase user never reaches the client. */
+async function getAdminUser(): Promise<AdminUser | null> {
+  const result = await resolve(AuthController).getCurrentUser();
+  const user = result.success ? result.data : null;
+
+  if (!user?.email) return null;
+
+  const meta = user.user_metadata ?? {};
+
+  return {
+    name: meta.full_name ?? meta.name ?? user.email.split('@')[0],
+    email: user.email,
+    avatarUrl: meta.avatar_url,
+  };
+}
+
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const [cookieStore, user] = await Promise.all([cookies(), getAdminUser()]);
+  const defaultOpen = cookieStore.get('sidebar_state')?.value !== 'false';
+
   return (
-    <div className="flex min-h-screen bg-background">
+    <SidebarProvider defaultOpen={defaultOpen}>
       <NextTopLoader showSpinner={false} />
-
-      {/* Desktop Sidebar */}
-      <aside className="hidden lg:block">
-        <AdminSidebar />
-      </aside>
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col">
-        <AdminMobileHeader />
-
-        {/* Page Content */}
-        <main className="flex-1 p-4 lg:p-8">
-          <div className="mx-auto max-w-7xl">
+      <AdminSidebar variant="inset" user={user} />
+      <SidebarInset className="md:peer-data-[variant=inset]:border">
+        <AdminSiteHeader />
+        <main className="flex flex-1 flex-col p-4 lg:p-6">
+          <div className="mx-auto w-full max-w-7xl">
             {children}
           </div>
         </main>
-      </div>
-    </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }

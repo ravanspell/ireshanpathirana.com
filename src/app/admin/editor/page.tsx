@@ -31,7 +31,7 @@ export default async function EditorPage({
 
   if (!id) {
     return (
-      <div className="mt-10">
+      <div>
         <h1 className="text-foreground mb-4 text-2xl font-bold">New Post</h1>
         <Editor tagSuggestions={await getTagSuggestions()} />
       </div>
@@ -52,7 +52,7 @@ export default async function EditorPage({
   const post = result.data;
 
   return (
-    <div className="mt-10">
+    <div >
       <h1 className="text-foreground mb-4 text-2xl font-bold">
         {post.published ? 'Edit Post' : 'Edit Draft'}
       </h1>

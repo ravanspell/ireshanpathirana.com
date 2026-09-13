@@ -10,17 +10,15 @@ import {
 import { saveArticleAction } from "@/app/actions/artical";
 import type { OutputData } from "@editorjs/editorjs";
 import { useIsMounted } from "@/utils/hooks/useMounted";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/atoms/button";
 import TagInput from "@molecules/TagInput/TagInput";
 import { loadEditorTools } from "@lib/editor-tools";
 import { slugify } from "@lib/slug";
 
-// Custom interface for Editor.js instance
 interface EditorJSInstance {
     destroy: () => void;
     save: () => Promise<OutputData>;
     render: (data: OutputData) => Promise<void>;
-    // Add other methods as needed (e.g., clear, focus)
 }
 
 // Shared by the title and slug inputs, and matched by `TagInput`'s wrapper.
@@ -188,10 +186,9 @@ export default function EditorClient({
 
             <div className="space-y-2">
                 <label className="block text-sm font-medium" htmlFor="post-slug">
-                    Slug
+                    Slug (/blog/..)
                 </label>
                 <div className="flex items-center gap-2">
-                    <span className="text-muted-foreground shrink-0 font-mono text-sm">/blog/</span>
                     <input
                         id="post-slug"
                         value={slug}
