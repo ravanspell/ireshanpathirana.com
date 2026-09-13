@@ -1,7 +1,7 @@
 'use client';
 
 import { useTransition } from 'react';
-import { ChevronsUpDown, Globe, LogOut } from 'lucide-react';
+import { ChevronsUpDown, LogOut } from 'lucide-react';
 import { logoutAction } from '@/app/actions/auth';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/atoms/avatar';
 import {
@@ -18,9 +18,6 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/atoms/sidebar';
-import { ROUTES } from '@/lib/constants/routes';
-
-/** The slice of the Supabase user the sidebar shows — plain, so it can cross from the layout. */
 export interface AdminUser {
   name: string;
   email: string;
@@ -80,13 +77,6 @@ export default function AdminNavUser({ user }: { user: AdminUser }) {
                 <UserSummary user={user} />
               </div>
             </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem asChild>
-              <a href={ROUTES.HOME} target="_blank" rel="noopener noreferrer">
-                <Globe />
-                Open site
-              </a>
-            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               disabled={isLoggingOut}

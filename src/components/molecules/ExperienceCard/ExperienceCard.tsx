@@ -43,11 +43,17 @@ const ExperienceCard = (props: ExperienceCardProps) => {
         <span>{date}</span>
         <div className="flex flex-col gap-y-2 ">
           <h1>
-            <CustomLink href={companyWebsiteLink} name={companyName} useGroup external>
+            <CustomLink
+              href={companyWebsiteLink}
+              name={companyName}
+              useGroup external
+            >
               <span className="absolute top-0 bottom-0 left-0 right-0" />
             </CustomLink>
           </h1>
-          <h4 className="h4 timeline-item-title">{designation}</h4>
+          <h5 className="h5 timeline-item-title">
+            {designation}
+          </h5>
           <Typography
             id="experience-description-3"
             className="text-muted-foreground text-md"

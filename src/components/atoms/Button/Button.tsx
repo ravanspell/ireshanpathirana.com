@@ -1,17 +1,16 @@
 import { ButtonHTMLAttributes, MouseEventHandler } from 'react';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { LucideIcon } from 'lucide-react';
 
 export interface SectionProps {
   label: string;
-  icon: IconProp;
+  icon: LucideIcon;
   onClick: MouseEventHandler<HTMLButtonElement>;
   buttonAttributes?: ButtonHTMLAttributes<HTMLButtonElement>;
   testId?: string;
 }
 
 const Button = (props: SectionProps) => {
-  const { label, icon, onClick, buttonAttributes, testId } = props;
+  const { label, icon: Icon, onClick, buttonAttributes, testId } = props;
 
   return (
     <button
@@ -52,7 +51,7 @@ const Button = (props: SectionProps) => {
       onClick={onClick}
       {...buttonAttributes}
     >
-      {icon && <FontAwesomeIcon icon={icon} />}
+      {Icon && <Icon className="size-[1em]" aria-hidden="true" />}
       {label}
     </button>
   );

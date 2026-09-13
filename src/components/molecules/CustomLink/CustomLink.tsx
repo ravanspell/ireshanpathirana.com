@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { ArrowRight } from 'lucide-react';
 
 interface LinkProps {
   href: string;
@@ -20,7 +19,7 @@ const CustomLink = ({ href, name, children, useGroup = true, external = false }:
     .join(' ');
 
   const iconClasses = [
-    'text-sm ml-1 transition-transform -rotate-45',
+    'inline size-[0.875rem] ml-1 transition-transform -rotate-45',
     useGroup ? 'group-hover:translate-x-1 group-hover:-translate-y-1' : '',
   ]
     .filter(Boolean)
@@ -35,7 +34,7 @@ const CustomLink = ({ href, name, children, useGroup = true, external = false }:
       aria-label={external ? `${name} (opens in a new tab)` : name}
     >
       {name}
-      {external && <FontAwesomeIcon className={iconClasses} icon={faArrowRight} />}
+      {external && <ArrowRight className={iconClasses} aria-hidden="true" />}
       {children}
     </Link>
   );

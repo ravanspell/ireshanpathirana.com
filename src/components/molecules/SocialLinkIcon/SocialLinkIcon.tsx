@@ -31,7 +31,7 @@ const SocialLinkIcon = (props: SocialLinkIconProps) => {
     <a
       id={id}
       href={href}
-      className="text-muted-foreground text-2xl transition-colors duration-300 hover:text-white"
+      className="text-muted-foreground text-2xl transition-colors duration-700 ease-in-out hover:text-primary focus-visible:text-primary"
       title={title}
       target="_blank"
     >

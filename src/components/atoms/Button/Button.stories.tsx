@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import Button from './Button';
-import { faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons';
+import { CircleArrowDown } from 'lucide-react';
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    icon: faArrowAltCircleDown,
+    icon: CircleArrowDown,
     label: 'My button',
     onClick: () => {},
   },

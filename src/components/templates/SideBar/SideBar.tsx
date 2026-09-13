@@ -2,9 +2,8 @@
  * Left side bar
  */
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faDownload, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import SocialLinks from '@organisms/SoclialLinks/SoclialLinks';
-import Button from '@atoms/Button/Button';
 import NavBar from '@organisms/NavBar/NavBar';
 import Typography from '@atoms/Typography/Typography';
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { unstable_rethrow } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Input from '@/components/atoms/Input/Input';
@@ -55,7 +56,11 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
       if (result?.error) {
         setServerError(result.error);
       }
-    } catch {
+    } catch (error) {
+      // A successful login redirects from the server action, and Next.js
+      // rejects the client-side action promise with a NEXT_REDIRECT error.
+      // Rethrow it so the router navigates instead of showing an error.
+      unstable_rethrow(error);
       setServerError('An unexpected error occurred');
     } finally {
       setIsSubmitting(false);
