@@ -15,7 +15,7 @@ const CertificationsSection = ({ mainContentRef }: CertificationsSectionProps) =
       id: 1,
       name: 'AWS Certified Solutions Architect - Associate',
       shortDescription:
-        'I earned this certification to validate my ability to design secure, scalable, and cost-effective systems on AWS (Amazon Web Services). It reflects my strong knowledge of cloud architecture and AWS best practices.',
+        'Validates the ability to design secure, scalable, and cost-effective cloud architectures, balancing reliability and performance across compute, storage, and networking.',
       certificationBadge: '/images/aws_solutions_architect_assoc_badge.png',
       credentialsLink:
         'https://www.credly.com/badges/ccff3010-ada6-4f34-9994-0aca65f08ae5/public_url',
@@ -24,7 +24,7 @@ const CertificationsSection = ({ mainContentRef }: CertificationsSectionProps) =
       id: 2,
       name: 'AWS Certified Developer - Associate',
       shortDescription:
-        'This certification demonstrates my expertise in building, deploying, and maintaining applications on AWS. It highlights my skills in coding, debugging, and developing cloud-native solutions.',
+        'Demonstrates proficiency in building, deploying, and maintaining cloud-native applications, with a focus on serverless development, automated delivery, and security best practices.',
       certificationBadge: '/images/aws_developer_assoc_badge.png',
       credentialsLink:
         'https://www.credly.com/badges/da3c39e4-0e3a-4ada-8386-2824c1af203a/linked_in_profile',
@@ -33,20 +33,11 @@ const CertificationsSection = ({ mainContentRef }: CertificationsSectionProps) =
       id: 3,
       name: 'Stripe Certified Developer - Professional',
       shortDescription:
-        'I achieved this certification to showcase my advanced knowledge of Stripe’s payment solutions. It proves my proficiency in working with APIs, secure transactions, and creating optimized payment workflows.',
+        'Recognizes advanced expertise in designing and integrating payment systems, including subscriptions, checkout flows, event-driven workflows, and secure transaction handling.',
       certificationBadge: '/images/stripe_dev_prof_badge.png',
       credentialsLink:
         'https://stripecertifications.credential.net/6beca4c1-bfcb-41a4-af6f-c5aa7e09959b#acc.QZ2UxdrH',
-    },
-    {
-      id: 4,
-      name: 'Reinvention With Agentic AI ',
-      shortDescription: 
-        'I achieved this certification to showcase my advanced knowledge of Stripe’s payment solutions. It proves my proficiency in working with APIs, secure transactions, and creating optimized payment workflows.',
-      certificationBadge: '/images/stripe_dev_prof_badge.png',
-      credentialsLink:  
-        'https://stripecertifications.credential.net/6beca4c1-bfcb-41a4-af6f-c5aa7e09959b#acc.QZ2UxdrH',
-    },
+    }
   ];
 
   return (

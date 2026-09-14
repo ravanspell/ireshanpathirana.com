@@ -21,54 +21,44 @@ const ExperienceSection = ({ mainContentRef }: ExperienceSectionProps) => {
           id="accenture"
           date="2023 - Present"
           companyName="Accenture"
-          designation="Senior Software Engineer"
+          designation="Senior Full Stack AI Engineer"
           companyWebsiteLink="https://www.accenture.com/sg-en"
-          shortDescription="uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility."
+          shortDescription="Build AI-powered, full-stack applications for global enterprise clients, taking features from prototype to production. Integrate large language models through RAG pipelines and agentic workflows, exposed via Node.js and Python APIs, and craft the React interfaces that bring them to users. Evaluate model quality, cost and latency, mentor engineers, and partner with product and design teams."
           technologiesTagLabels={[
-            'JavaScript',
             'Node.js',
             'TypeScript',
-            'Rect.js',
-            'Storybook',
-            'Microfrontends',
-            'Redux',
-            'Redux Toolkit',
-            'Jest',
-            'React Testing Library',
+            'React.js',
+            'Python',
+            'LangGraph',
+            'LangChain',
           ]}
         />
         <ExperienceCard
           id="eyepax-it"
           date="2021 - 2023"
-          companyName="Eyepax It Consultents"
+          companyName="Eyepax IT Consultants"
           designation="Software Engineer"
           companyWebsiteLink="https://eyepax.com"
-          shortDescription="uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility."
+          shortDescription="Built and maintained full-stack web applications for international clients. Developed customer-facing frontends with React, Next.js and TypeScript, built REST APIs and backend services with Nest.js and Laravel, and deployed serverless workloads on AWS. Wrote automated tests with Jest and React Testing Library, and collaborated with clients and cross-functional teams to scope, estimate and deliver features in agile sprints."
           technologiesTagLabels={[
-            'JavaScript',
             'Node.js',
             'TypeScript',
-            'Rect.js',
-            'jest',
-            'React Testing Library',
+            'React.js',
+            'Jest',
             'Next.js',
-            'Storybook',
-            'PHP',
-            'Laravel',
             'AWS',
             'Serverless',
             'Nest.js',
             'Redux',
-            'Redux Toolkit',
           ]}
         />
         <ExperienceCard
           id="axiata-digital-labs"
           date="2019 - 2021"
-          companyName="Axiata Digital labs"
+          companyName="Axiata Digital Labs"
           designation="Software Engineer"
           companyWebsiteLink="https://www.axiatadigitallabs.com"
-          shortDescription="uild and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility."
+          shortDescription="Contributed to digital products for the telecommunications sector used by a large customer base across the region. Implemented React frontends with Redux and Redux Saga for complex asynchronous flows, developed backend services and APIs with PHP, Laravel and Node.js, and built serverless integrations on Microsoft Azure. Wrote unit tests, documented UI components in Storybook, and took part in code reviews and production support."
           technologiesTagLabels={[
             'JavaScript',
             'Node.js',
@@ -76,10 +66,7 @@ const ExperienceSection = ({ mainContentRef }: ExperienceSectionProps) => {
             'Serverless',
             'Azure',
             'Redux',
-            'Redux Saga',
-            'PHP',
-            'Laravel',
-            'Rect.js',
+            'React.js',
             'Jest',
             'React Testing Library',
             'Storybook',

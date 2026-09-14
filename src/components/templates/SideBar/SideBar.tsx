@@ -11,7 +11,7 @@ const SideBar = () => {
   return (
     <aside
       id="sidebar"
-      className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[40%] lg:flex-col lg:justify-between lg:py-24"
+      className="flex min-h-60 flex-col justify-between pt-10 lg:sticky lg:top-0 lg:max-h-screen lg:w-[40%] lg:py-24"
       aria-label="Main Navigation"
     >
       <div className="">
